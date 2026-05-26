@@ -1,0 +1,1 @@
+var e=`/assets/about-banner-zr5t0_i-.png`,t=`/assets/logo-BNXNIG2E.png`,n=`/assets/steph-CkFZKXya.png`,r=`/assets/tyson-CpOtIucL.png`;function i(i){return new URL(Object.assign({"./images/about-banner.png":e,"./images/logo.png":t,"./images/steph.png":n,"./images/tyson.png":r})[`./images/${i}`],import.meta.url).href}export{i as t};

@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@theme {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+}
+
+/* Subtle hover */
+.menu li > *:not(ul):not(.menu-title):hover {
+  background-color: #dbeafe !important; /* light blue */
+  color: #0c306e !important;
+  transition: background-color 0.15s ease;
+}
+
+/* Darker when active/clicked */
+.menu li > *:not(ul):not(.menu-title).active,
+.menu li > *:not(ul):not(.menu-title):active,
+.menu li > details > summary:active {
+  background-color: #0c306e !important; /* navy */
+  color: white !important;
+}
+
+
