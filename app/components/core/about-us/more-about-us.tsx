@@ -1,70 +1,101 @@
 import * as React from "react";
 
-export interface MoreAbout {}
+export interface MoreAboutProps {}
 
 export function MoreAbout() {
   return (
-    <section className="flex flex-row gap-10 pb-4 align-middle">
-      <section className="flex flex-col gap-y-6 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
-        <h3 className="text-2xl font-bold text-gray-900">
-          About Attorney Stephanie Willison
-        </h3>
+    <section className="flex w-full flex-col gap-12 lg:flex-row">
+      {/* Left Column */}
+      <article className="flex-1 max-w-none prose prose-slate prose-base">
+        <section className="flex flex-col gap-y-1 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
+          <h3 className="mb-1 text-2xl font-bold text-gray-900">
+            About Attorney Stephanie Willison
+          </h3>
 
-        <div className="flex flex-col gap-1">
-          <h4>Education</h4>
-          <p>
-            {" "}
-            University of Arizona James E. Rogers College of Law: J.D.;
-            2003{" "}
-          </p>
-          <p> University of Texas at Austin: B.S. in Communication </p>
-        </div>
+          <div className="flex flex-col gap-y-.5">
+            <div className="flex flex-col">
+              <h4>Education</h4>
 
-        <div className="flex flex-col gap-1">
-          <h4>Professional Memberships</h4>
-          <p> Arizona State Bar Association, Family Law </p>
-          <p> Yavapai County Bar Association </p>
-        </div>
+              <ul>
+                <li>
+                  University of Arizona James E. Rogers College of Law: J.D.;
+                  2003
+                </li>
 
-        <div className="flex flex-col gap-1">
-          <h4>Awards & Accolades</h4>
-          <p> Avvo Rating in Family Law </p>
-          <p>
-            {" "}
-            American Institute of Family Law Attorneys™ 10 Best in Client
-            Satisfaction for 2017{" "}
-          </p>
-        </div>
-      </section>
-      <section className="flex flex-col justify-items-center gap-y-8 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
-        <h3 className="text-2xl font-bold text-gray-900">
-          When Prescott Needs Our Firm, We're There.
-        </h3>
+                <li>University of Texas at Austin: B.S. in Communication</li>
+              </ul>
+            </div>
 
-        <div className="flex flex-col gap-1">
-          <p>
-            "Stephanie is a knowledgeable and respected attorney in Northern
-            Arizona."
-          </p>
-          <h5> Criminal Defense Attorney </h5>
-        </div>
+            <div className="flex flex-col">
+              <h4>Professional Memberships</h4>
 
-        <div className="flex flex-col gap-1">
-          <p>
-            "I would like to thank you and tell you how much we appreciate you
-            defending our boy."
-          </p>
-          <h5> Client Mother </h5>
-        </div>
+              <ul>
+                <li>Arizona State Bar Association, Family Law</li>
 
-        <div className="flex flex-col gap-1">
-          <p>
-            "I endorse this lawyer. Stephanie is a former prosecutor with great
-            experience and knowledge."
-          </p>
-          <h5>  Personal Injury Lawyer  </h5>
-        </div>
-      </section>
+                <li>Yavapai County Bar Association</li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col">
+              <h4>Awards & Accolades</h4>
+
+              <ul>
+                <li>Avvo Rating in Family Law</li>
+
+                <li>
+                  American Institute of Family Law Attorneys™ 10 Best in Client
+                  Satisfaction for 2017
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      {/* Vertical Divider */}
+      <div className="hidden lg:flex pt-12 px-2">
+        <div className="w-[2px] self-stretch rounded-full bg-accent/40"></div>
+      </div>
+
+      {/* Right Column */}
+      <article className="flex-1 max-w-none prose prose-slate prose-base">
+        <section className="flex flex-col gap-y-2 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
+          <h3 className="mb-1 text-2xl font-bold text-gray-900">
+            When Prescott Needs Our Firm, We're There
+          </h3>
+
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-col">
+              <p className="mb-1 leading-relaxed">
+                "Stephanie is a knowledgeable and respected attorney in  Northern
+                Arizona."
+              </p>
+
+              <h5 className="mt-0 text-sm text-primary">
+                Criminal Defense Attorney
+              </h5>
+            </div>
+
+            <div className="flex flex-col gap-0">
+              <p className="mb-1 leading-relaxed">
+                "I would like to thank you and tell you how much we appreciate
+                you defending our boy."
+              </p>
+
+              <h5 className="mt-0 text-sm text-primary">Client Mother</h5>
+            </div>
+
+            <div className="flex flex-col gap-0">
+              <p className="mb-1 leading-relaxed">
+                "I endorse this lawyer. Stephanie is a former prosecutor with
+                great experience and knowledge."
+              </p>
+
+              <h5 className="mt-0 text-sm text-primary">Personal Injury Lawyer</h5>
+            </div>
+          </div>
+        </section>
+      </article>
     </section>
   );
 }
