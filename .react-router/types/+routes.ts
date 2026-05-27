@@ -35,7 +35,7 @@ type RouteFiles = {
 };
 
 type RouteModules = {
-  "root": typeof import("./app/root.js");
-  "routes/home": typeof import("./app/routes/home.js");
-  "components/core/about-us/about-us": typeof import("./app/components/core/about-us/about-us.js");
+  "root": typeof import("./app/root.tsx");
+  "routes/home": typeof import("./app/routes/home.tsx");
+  "components/core/about-us/about-us": typeof import("./app/./components/core/about-us/about-us.tsx");
 };

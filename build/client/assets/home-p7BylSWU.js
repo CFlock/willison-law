@@ -1,1 +1,0 @@
-import{O as e,t}from"./jsx-runtime-vwNx8si8.js";import"./header-CGtlXlHr.js";var n=t();function r(){return(0,n.jsx)(`main`,{children:(0,n.jsx)(`p`,{children:`SUP FROM HOME`})})}function i({}){return[{title:`New React Router App`},{name:`description`,content:`Welcome to React Router!`}]}var a=e(function(){return(0,n.jsx)(r,{})});export{a as default,i as meta};

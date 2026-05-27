@@ -3,7 +3,7 @@ import { AboutUs } from "~/components/core/about-us/about-us";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "About Us" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
