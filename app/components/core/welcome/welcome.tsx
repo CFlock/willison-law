@@ -42,9 +42,9 @@ export function Welcome() {
         <div className="sticky top-0 flex h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-12">
           {/* Floating Logo */}
           <div
-            className="absolute top-8 left-1/2 z-20 translate-x-[-46%] transition-all duration-500"
+            className="absolute top-8 left-1/2 z-20 transition-all duration-500"
             style={{
-              opacity: 1 - progress * 2,
+              opacity: Math.max(1 - progress * 1.2, 0),
               transform: `translateX(-50%) translateY(${progress * -20}px)`,
             }}
           >

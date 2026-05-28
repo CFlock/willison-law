@@ -26,18 +26,15 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const [scrollY, setScrollY] = React.useState(0);
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      setScrolled(window.scrollY > 120);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const progress = Math.min(scrollY / 500, 1);
 
@@ -53,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Header/>
+        <Header scrolled={scrolled} />
 
         <main>{children}</main>
 
