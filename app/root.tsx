@@ -39,7 +39,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const progress = Math.min(scrollY / 500, 1);
 
+  const scale = 1.25 - progress * 0.75;
+  const opacity = 1 - progress;
+  const translateY = -progress * 120;
   return (
     <html lang="en">
       <head>

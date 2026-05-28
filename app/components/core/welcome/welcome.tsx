@@ -1,11 +1,27 @@
 import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
 
-type WelcomeProps = {
-  scrolled: boolean;
-};
+export function Welcome() {
+  const [scrollY, setScrollY] = React.useState(0);
 
-export function Welcome({ scrolled }: WelcomeProps) {
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const progress = Math.min(scrollY / 500, 1);
+
+  const scale = 1.25 - progress * 0.75;
+  const opacity = 1 - progress;
+  const translateY = -progress * 120;
+
   const stephInfo = [
     "If you need assistance with a complex family law matter, Prescott family lawyer Stephanie Willison is here to help. With an extensive legal background encompassing both criminal defense and family law, Stephanie has the experience and skill to help you navigate the legal process. As the founding attorney of Willison Law, PC, she focuses her practice on all aspects of family law, including divorce, child custody, spousal maintenance, mediation, and more. She can even help you with sensitive matters, such as paternity disputes, domestic violence, and grandparent rights. With every case she takes on, Stephanie strives to provide her clients with compassionate, personalized legal services tailored to their unique goals.",
 
@@ -26,40 +42,15 @@ export function Welcome({ scrolled }: WelcomeProps) {
         <div className="sticky top-0 flex h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-12">
           <div className="flex w-full -translate-y-8 justify-center">
             <div
-              className={`
-                origin-center
-                transition-all
-                duration-500
-                ease-[cubic-bezier(0.77,0,0.175,1)]
-                ${
-                  scrolled
-                    ? "translate-y-[-6rem] scale-90 opacity-70"
-                    : "translate-y-0 scale-125 opacity-100"
-                }
-              `}
+              className="origin-center transition-transform duration-75 ease-out"
+              style={{
+                transform: `translateY(${translateY}px) scale(${scale})`,
+                opacity,
+              }}
             >
-              <div
-                className={`
-                  inline-flex
-                  border-2
-                  border-accent/70
-                  transition-all
-                  duration-500
-                  ease-[cubic-bezier(0.77,0,0.175,1)]
-                  ${scrolled ? "px-8 py-4" : "px-12 py-8"}
-                `}
-              >
+              <div className="inline-flex border-2 border-accent/70 px-12 py-8">
                 <span
-                  className={`
-                    text-rotate
-                    font-light
-                    tracking-[0.08em]
-                    text-primary
-                    transition-all
-                    duration-500
-                    ease-[cubic-bezier(0.77,0,0.175,1)]
-                    ${scrolled ? "text-5xl" : "text-7xl md:text-8xl"}
-                  `}
+                  className="text-rotate text-7xl font-light tracking-[0.08em] text-primary md:text-8xl"
                   style={{ "--duration": "9s" } as React.CSSProperties}
                 >
                   <span className="justify-items-start">
@@ -74,15 +65,11 @@ export function Welcome({ scrolled }: WelcomeProps) {
 
           {/* Scroll Indicator */}
           <div
-            className={`
-    absolute
-    bottom-10
-    left-1/2
-    -translate-x-1/2
-    transition-all
-    duration-500
-    ${scrolled ? "translate-y-4 opacity-0" : "translate-y-0 opacity-100"}
-  `}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 transition-all duration-500"
+            style={{
+              opacity: 1 - progress * 2,
+              transform: `translateX(-50%) translateY(${progress * 20}px)`,
+            }}
           >
             <div className="flex flex-col items-center gap-3">
               <svg
@@ -91,7 +78,7 @@ export function Welcome({ scrolled }: WelcomeProps) {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
-                className="h-6 w-6 text-primary/90 animate-pulse"
+                className="h-6 w-6 animate-pulse text-primary/90"
               >
                 <path
                   strokeLinecap="round"
