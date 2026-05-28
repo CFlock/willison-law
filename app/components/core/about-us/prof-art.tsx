@@ -30,7 +30,7 @@ export function ProfArt({ headerTitle, paragraphs, person }: ProfArtProps) {
         <img
           src={getImageUrl(person)}
           alt="Stephanie Willison"
-          className="relative z-10 w-full aspect-[4/5] object-cover rounded-xl"
+          className="relative z-10 w-full aspect-4/5 object-cover rounded-xl"
         />
       </div>
     </section>

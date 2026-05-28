@@ -3,6 +3,7 @@ import { ProfArt } from "../about-us/prof-art";
 
 export function Welcome() {
   const [scrollY, setScrollY] = React.useState(0);
+  const [smoothProgress, setSmoothProgress] = React.useState(0);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -18,13 +19,32 @@ export function Welcome() {
     };
   }, []);
 
+  React.useEffect(() => {
+    let animationFrame: number;
+
+    const animate = () => {
+      const target = Math.min(scrollY / 700, 1);
+
+      setSmoothProgress((prev) => {
+        const next = prev + (target - prev) * 0.08;
+        return next;
+      });
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [scrollY]);
+
   /*
    * Subtle Scroll Animation
    */
-  const progress = Math.min(scrollY / 700, 1);
+  const progress = smoothProgress;
 
-  const heroScale = 1 - progress * 0.08;
-  const heroTranslateY = -progress * 40;
+  const heroScale = 1 - progress * 0.12;
+  const heroTranslateY = -progress * 60;
 
   const stephInfo = [
     "If you need assistance with a complex family law matter, Prescott family lawyer Stephanie Willison is here to help. With an extensive legal background encompassing both criminal defense and family law, Stephanie has the experience and skill to help you navigate the legal process. As the founding attorney of Willison Law, PC, she focuses her practice on all aspects of family law, including divorce, child custody, spousal maintenance, mediation, and more. She can even help you with sensitive matters, such as paternity disputes, domestic violence, and grandparent rights. With every case she takes on, Stephanie strives to provide her clients with compassionate, personalized legal services tailored to their unique goals.",
@@ -46,7 +66,7 @@ export function Welcome() {
           <div className="flex w-full flex-col items-center justify-center -translate-y-8">
             {/* Rotating Text */}
             <div
-              className="origin-center will-change-transform"
+              className="origin-center will-change-transform transform-gpu"
               style={{
                 transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
               }}
@@ -61,9 +81,9 @@ export function Welcome() {
                   }
                 >
                   <span className="justify-items-start">
-                    <span>WISDOM.</span>
-                    <span>COMPASSION.</span>
-                    <span>RESULTS.</span>
+                    <span>WISDOM</span>
+                    <span>COMPASSION</span>
+                    <span>RESULTS</span>
                   </span>
                 </span>
               </div>
