@@ -22,15 +22,15 @@ export function ProfArt({ headerTitle, paragraphs, person }: ProfArtProps) {
         </ul>
       </article>
 
-      <div className="relative shrink-0 w-full md:w-72">
+      <div className="relative shrink-0 w-full max-w-sm mx-auto md:mx-0 md:w-72">
         {/* outlined square behind */}
-        <div className="absolute top-5 left-5 h-full w-full border-2 border-accent/40 rounded-xl" />
+        <div className="absolute inset-0 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5 border-2 border-accent/40 rounded-xl" />
 
         {/* actual image */}
         <img
           src={getImageUrl(person)}
           alt="Stephanie Willison"
-          className="relative z-10 w-full h-auto object-cover rounded-xl"
+          className="relative z-10 w-full aspect-[4/5] object-cover rounded-xl"
         />
       </div>
     </section>
