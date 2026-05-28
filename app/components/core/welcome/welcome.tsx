@@ -9,7 +9,9 @@ export function Welcome() {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -17,26 +19,12 @@ export function Welcome() {
   }, []);
 
   /*
-   * Scroll Progress
+   * Subtle Scroll Animation
    */
-  const progress = Math.min(scrollY / 500, 1);
+  const progress = Math.min(scrollY / 700, 1);
 
-  /*
-   * Hero Animation
-   */
-  const heroScale = 1.2 - progress * 0.7;
-  const heroOpacity = 1 - progress * 1.15;
-  const heroTranslateY = -progress * 140;
-
-  /*
-   * Floating Logo
-   */
-  const logoOpacity = Math.max(1 - progress * 1.1, 0);
-
-  /*
-   * Scroll Indicator
-   */
-  const indicatorOpacity = Math.max(1 - progress * 2, 0);
+  const heroScale = 1 - progress * 0.08;
+  const heroTranslateY = -progress * 40;
 
   const stephInfo = [
     "If you need assistance with a complex family law matter, Prescott family lawyer Stephanie Willison is here to help. With an extensive legal background encompassing both criminal defense and family law, Stephanie has the experience and skill to help you navigate the legal process. As the founding attorney of Willison Law, PC, she focuses her practice on all aspects of family law, including divorce, child custody, spousal maintenance, mediation, and more. She can even help you with sensitive matters, such as paternity disputes, domestic violence, and grandparent rights. With every case she takes on, Stephanie strives to provide her clients with compassionate, personalized legal services tailored to their unique goals.",
@@ -49,60 +37,41 @@ export function Welcome() {
 
     "Tyson’s family law experience enables him to represent clients in a broad range of family law matters including legal separation, divorce, modification and enforcement of court orders, child support and spousal maintenance, and child custody and parenting time issues. Tyson supports his clients through every stage – from settlement negotiations through trial litigation. He is dedicated to helping his clients through one of the most challenging and emotionally charged legal situations a person could experience.",
   ];
-  return (
-    <section>
-      {/* Hero Section */}
-      <section className="relative h-[160vh]">
-        <div className="sticky top-0 flex min-h-svh items-center justify-center overflow-hidden px-6">
-          {/* Floating Logo */}
-          <div
-            className="absolute top-8 left-1/2 z-20"
-            style={{
-              opacity: logoOpacity,
-              transform: `translateX(-50%) translateY(${progress * -20}px)`,
-            }}
-          >
-            <img
-              src="/logo.png"
-              alt="Willison Law"
-              className="h-16 w-auto opacity-90"
-            />
-          </div>
 
-          {/* Hero Content */}
-          <div
-            className="origin-center will-change-transform"
-            style={{
-              transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
-              opacity: heroOpacity,
-            }}
-          >
-            <div className="inline-flex border-2 border-accent shadow-[0_0_40px_rgba(0,0,0,0.03)] px-10 py-6 md:px-14 md:py-8">
-              <span
-                className="text-rotate font-light tracking-[0.08em] text-primary md:text-8xl text-4xl sm:text-5xl lg:text-8xl"
-                style={
-                  {
-                    "--duration": "6s",
-                  } as React.CSSProperties
-                }
-              >
-                <span className="justify-items-start">
-                  <span>WISDOM.</span>
-                  <span>COMPASSION.</span>
-                  <span>RESULTS.</span>
+  return (
+    <section className="bg-base-100">
+      {/* Hero */}
+      <section className="relative min-h-[115svh]">
+        <div className="sticky top-0 flex min-h-screen items-center justify-center px-6 md:px-12">
+          <div className="flex w-full flex-col items-center justify-center -translate-y-8">
+            {/* Rotating Text */}
+            <div
+              className="origin-center will-change-transform"
+              style={{
+                transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
+              }}
+            >
+              <div className="inline-flex border border-accent px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-7">
+                <span
+                  className="text-rotate text-4xl font-light tracking-[0.08em] text-primary sm:text-5xl md:text-7xl lg:text-8xl"
+                  style={
+                    {
+                      ["--duration" as any]: "6s",
+                    } as React.CSSProperties
+                  }
+                >
+                  <span className="justify-items-start">
+                    <span>WISDOM.</span>
+                    <span>COMPASSION.</span>
+                    <span>RESULTS.</span>
+                  </span>
                 </span>
-              </span>
+              </div>
             </div>
           </div>
 
           {/* Scroll Indicator */}
-          <div
-            className="absolute bottom-10 left-1/2"
-            style={{
-              opacity: indicatorOpacity,
-              transform: `translateX(-50%) translateY(${progress * 18}px)`,
-            }}
-          >
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <div className="flex flex-col items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,8 +87,6 @@ export function Welcome() {
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
-
-              <div className="h-12 w-px bg-accent/80"></div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
 import "./Header.css";
 
@@ -68,38 +68,7 @@ const dropdownItemClass = `
 `;
 
 const Header = () => {
-  const location = useLocation();
-
-  const isHomePage = location.pathname === "/";
-
-  const [visible, setVisible] = React.useState(!isHomePage);
-
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!isHomePage) return;
-
-    const handleScroll = () => {
-      setVisible(window.scrollY > 120);
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isHomePage]);
-
-  React.useEffect(() => {
-    if (!isHomePage) {
-      setVisible(true);
-    }
-  }, [isHomePage]);
-
   return (
     <>
       <header
@@ -122,11 +91,6 @@ const Header = () => {
           ease-[cubic-bezier(0.77,0,0.175,1)]
           lg:px-8
           lg:py-5
-          ${
-            visible
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0"
-          }
         `}
       >
         {/* Logo */}
