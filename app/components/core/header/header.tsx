@@ -65,27 +65,25 @@ type HeaderProps = {
   scrolled: boolean;
 };
 
-const Header = ({ scrolled }: HeaderProps) => {
+const Header = () => {
   return (
     <header
-      className={`
-    navbar
-    fixed
-    top-0
-    left-0
-    z-50
-    w-full
-    border-b
-    border-base-300
-    bg-base-100/95
-    px-8
-    py-5
-    backdrop-blur-sm
-    transition-all
-    duration-700
-    ease-[cubic-bezier(0.77,0,0.175,1)]
-    ${scrolled ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
-  `}
+      className="
+        navbar
+        fixed
+        top-0
+        left-0
+        z-50
+        w-full
+        border-b
+        border-base-300
+        bg-base-100/95
+        px-8
+        py-5
+        backdrop-blur-sm
+        transition-all
+        duration-700
+      "
     >
       {/* Logo */}
       <div className="flex-1">
