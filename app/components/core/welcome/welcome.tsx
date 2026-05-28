@@ -1,9 +1,11 @@
 import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
 
-export function Welcome() {
-  const [scrolled, setScrolled] = React.useState(false);
+type WelcomeProps = {
+  scrolled: boolean;
+};
 
+export function Welcome({ scrolled }: WelcomeProps) {
   const stephInfo = [
     "If you need assistance with a complex family law matter, Prescott family lawyer Stephanie Willison is here to help. With an extensive legal background encompassing both criminal defense and family law, Stephanie has the experience and skill to help you navigate the legal process. As the founding attorney of Willison Law, PC, she focuses her practice on all aspects of family law, including divorce, child custody, spousal maintenance, mediation, and more. She can even help you with sensitive matters, such as paternity disputes, domestic violence, and grandparent rights. With every case she takes on, Stephanie strives to provide her clients with compassionate, personalized legal services tailored to their unique goals.",
 
@@ -15,37 +17,6 @@ export function Welcome() {
 
     "Tyson’s family law experience enables him to represent clients in a broad range of family law matters including legal separation, divorce, modification and enforcement of court orders, child support and spousal maintenance, and child custody and parenting time issues. Tyson supports his clients through every stage – from settlement negotiations through trial litigation. He is dedicated to helping his clients through one of the most challenging and emotionally charged legal situations a person could experience.",
   ];
-
-  React.useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-
-    const handleScroll = () => {
-      const y = window.scrollY;
-
-      setScrolled(y > 120);
-
-      // Reset timer every scroll
-      clearTimeout(timeout);
-
-      // If user hasn't scrolled far enough to reveal content,
-      // gently return them to the top after a pause
-      if (y > 0 && y < 1000) {
-        timeout = setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }, 1200);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <section className="space-y-40">
@@ -62,7 +33,7 @@ export function Welcome() {
                 ease-[cubic-bezier(0.77,0,0.175,1)]
                 ${
                   scrolled
-                    ? "-translate-y-24 scale-90 opacity-70"
+                    ? "translate-y-[-6rem] scale-90 opacity-70"
                     : "translate-y-0 scale-125 opacity-100"
                 }
               `}
@@ -98,6 +69,38 @@ export function Welcome() {
                   </span>
                 </span>
               </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div
+            className={`
+    absolute
+    bottom-10
+    left-1/2
+    -translate-x-1/2
+    transition-all
+    duration-500
+    ${scrolled ? "translate-y-4 opacity-0" : "translate-y-0 opacity-100"}
+  `}
+          >
+            <div className="flex flex-col items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="h-6 w-6 text-primary/90 animate-pulse"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+
+              <div className="h-12 w-px bg-accent/90"></div>
             </div>
           </div>
         </div>
