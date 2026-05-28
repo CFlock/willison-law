@@ -60,18 +60,23 @@ html,
 body {
 }
 
-/* Subtle hover */
-.menu li > *:not(ul):not(.menu-title):hover {
+/* Dropdown hover */
+.dropdown-content .menu li > a:hover,
+.dropdown-content .menu li > button:hover,
+.dropdown-content .menu li > summary:hover {
   background-color: #dbeafe !important;
-  color: #0c306e !important; /* deeper blue for better contrast */
-  transition: background-color 0.15s ease, color 0.15s ease;
+  color: #0c306e !important;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
-/* Darker when active/clicked */
-.menu li > *:not(ul):not(.menu-title).active,
-.menu li > *:not(ul):not(.menu-title):active,
-.menu li > details > summary:active {
-  background-color: #0c306e !important; /* navy */
+/* Dropdown active/click */
+.dropdown-content .menu li > a:active,
+.dropdown-content .menu li > button:active,
+.dropdown-content .menu li > summary:active,
+.dropdown-content .menu li > .active {
+  background-color: #0c306e !important;
   color: white !important;
 }
 

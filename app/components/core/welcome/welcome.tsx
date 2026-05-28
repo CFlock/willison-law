@@ -9,18 +9,34 @@ export function Welcome() {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  /*
+   * Scroll Progress
+   */
   const progress = Math.min(scrollY / 500, 1);
 
-  const scale = 1.25 - progress * 0.75;
-  const opacity = 1 - progress;
-  const translateY = -progress * 120;
+  /*
+   * Hero Animation
+   */
+  const heroScale = 1.2 - progress * 0.7;
+  const heroOpacity = 1 - progress * 1.15;
+  const heroTranslateY = -progress * 140;
+
+  /*
+   * Floating Logo
+   */
+  const logoOpacity = Math.max(1 - progress * 1.1, 0);
+
+  /*
+   * Scroll Indicator
+   */
+  const indicatorOpacity = Math.max(1 - progress * 2, 0);
 
   const stephInfo = [
     "If you need assistance with a complex family law matter, Prescott family lawyer Stephanie Willison is here to help. With an extensive legal background encompassing both criminal defense and family law, Stephanie has the experience and skill to help you navigate the legal process. As the founding attorney of Willison Law, PC, she focuses her practice on all aspects of family law, including divorce, child custody, spousal maintenance, mediation, and more. She can even help you with sensitive matters, such as paternity disputes, domestic violence, and grandparent rights. With every case she takes on, Stephanie strives to provide her clients with compassionate, personalized legal services tailored to their unique goals.",
@@ -33,18 +49,16 @@ export function Welcome() {
 
     "Tyson’s family law experience enables him to represent clients in a broad range of family law matters including legal separation, divorce, modification and enforcement of court orders, child support and spousal maintenance, and child custody and parenting time issues. Tyson supports his clients through every stage – from settlement negotiations through trial litigation. He is dedicated to helping his clients through one of the most challenging and emotionally charged legal situations a person could experience.",
   ];
-
   return (
-    <section className="space-y-40">
-      {/* Hero */}
-      <section className="relative h-[140vh]">
-        {/* Sticky Hero */}
-        <div className="sticky top-0 flex h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-12">
+    <section>
+      {/* Hero Section */}
+      <section className="relative h-[160vh]">
+        <div className="sticky top-0 flex min-h-svh items-center justify-center overflow-hidden px-6">
           {/* Floating Logo */}
           <div
-            className="absolute top-8 left-1/2 z-20 transition-all duration-500"
+            className="absolute top-8 left-1/2 z-20"
             style={{
-              opacity: Math.max(1 - progress * 1.2, 0),
+              opacity: logoOpacity,
               transform: `translateX(-50%) translateY(${progress * -20}px)`,
             }}
           >
@@ -54,35 +68,39 @@ export function Welcome() {
               className="h-16 w-auto opacity-90"
             />
           </div>
-          <div className="flex w-full -translate-y-8 justify-center">
-            <div
-              className="origin-center transition-transform duration-75 ease-out"
-              style={{
-                transform: `translateY(${translateY}px) scale(${scale})`,
-                opacity,
-              }}
-            >
-              <div className="inline-flex border-2 border-accent/70 px-12 py-8">
-                <span
-                  className="text-rotate text-7xl font-light tracking-[0.08em] text-primary md:text-8xl"
-                  style={{ "--duration": "9s" } as React.CSSProperties}
-                >
-                  <span className="justify-items-start">
-                    <span>WISDOM.</span>
-                    <span>COMPASSION.</span>
-                    <span>RESULTS.</span>
-                  </span>
+
+          {/* Hero Content */}
+          <div
+            className="origin-center will-change-transform"
+            style={{
+              transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
+              opacity: heroOpacity,
+            }}
+          >
+            <div className="inline-flex border-2 border-accent shadow-[0_0_40px_rgba(0,0,0,0.03)] px-10 py-6 md:px-14 md:py-8">
+              <span
+                className="text-rotate font-light tracking-[0.08em] text-primary md:text-8xl text-4xl sm:text-5xl lg:text-8xl"
+                style={
+                  {
+                    "--duration": "6s",
+                  } as React.CSSProperties
+                }
+              >
+                <span className="justify-items-start">
+                  <span>WISDOM.</span>
+                  <span>COMPASSION.</span>
+                  <span>RESULTS.</span>
                 </span>
-              </div>
+              </span>
             </div>
           </div>
 
           {/* Scroll Indicator */}
           <div
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 transition-all duration-500"
+            className="absolute bottom-10 left-1/2"
             style={{
-              opacity: 1 - progress * 2,
-              transform: `translateX(-50%) translateY(${progress * 20}px)`,
+              opacity: indicatorOpacity,
+              transform: `translateX(-50%) translateY(${progress * 18}px)`,
             }}
           >
             <div className="flex flex-col items-center gap-3">
@@ -92,7 +110,7 @@ export function Welcome() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
-                className="h-6 w-6 animate-pulse text-primary/90"
+                className="h-6 w-6 animate-pulse text-primary/80"
               >
                 <path
                   strokeLinecap="round"
@@ -101,15 +119,15 @@ export function Welcome() {
                 />
               </svg>
 
-              <div className="h-12 w-px bg-accent/90"></div>
+              <div className="h-12 w-px bg-accent/80"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Attorneys */}
-      <section className="space-y-40 px-12 pb-32">
-        <div className="mx-auto w-full max-w-6xl px-6 grid gap-24">
+      {/* About Section */}
+      <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
+        <div className="mx-auto grid max-w-6xl gap-40">
           <ProfArt
             headerTitle="Stephanie Willison"
             paragraphs={stephInfo}

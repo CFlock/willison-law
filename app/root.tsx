@@ -33,28 +33,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
       setScrolled(window.scrollY > 120);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  const progress = Math.min(scrollY / 500, 1);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  const scale = 1.25 - progress * 0.75;
-  const opacity = 1 - progress;
-  const translateY = -progress * 120;
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <Meta />
+
         <Links />
       </head>
+
       <body>
-        <Header scrolled={scrolled} />
+        <Header />
 
         <main>{children}</main>
 
         <ScrollRestoration />
+
         <Scripts />
       </body>
     </html>
