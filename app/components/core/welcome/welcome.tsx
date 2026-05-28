@@ -80,7 +80,7 @@ export function Welcome() {
                     } as React.CSSProperties
                   }
                 >
-                  <span className="justify-items-start">
+                  <span className="justify-items-center">
                     <span>WISDOM</span>
                     <span>COMPASSION</span>
                     <span>RESULTS</span>
