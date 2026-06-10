@@ -17,12 +17,57 @@ type Pages = {
   "/about-us": {
     params: {};
   };
+  "/family-law": {
+    params: {};
+  };
+  "/family-law/divorce": {
+    params: {};
+  };
+  "/family-law/child-custody": {
+    params: {};
+  };
+  "/family-law/child-support": {
+    params: {};
+  };
+  "/family-law/domestic-violence": {
+    params: {};
+  };
+  "/family-law/legal-separation": {
+    params: {};
+  };
+  "/family-law/grandparents-rights": {
+    params: {};
+  };
+  "/family-law/mediation": {
+    params: {};
+  };
+  "/family-law/paternity": {
+    params: {};
+  };
+  "/estate-planning": {
+    params: {};
+  };
+  "/estate-planning/issues": {
+    params: {};
+  };
+  "/estate-planning/process": {
+    params: {};
+  };
+  "/estate-planning/trusts": {
+    params: {};
+  };
+  "/estate-planning/wills": {
+    params: {};
+  };
+  "/contact-us": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about-us";
+    page: "/" | "/about-us" | "/family-law" | "/family-law/divorce" | "/family-law/child-custody" | "/family-law/child-support" | "/family-law/domestic-violence" | "/family-law/legal-separation" | "/family-law/grandparents-rights" | "/family-law/mediation" | "/family-law/paternity" | "/estate-planning" | "/estate-planning/issues" | "/estate-planning/process" | "/estate-planning/trusts" | "/estate-planning/wills" | "/contact-us";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -32,10 +77,95 @@ type RouteFiles = {
     id: "components/core/about-us/about-us";
     page: "/about-us";
   };
+  "./components/core/family-law/family-law-layout.tsx": {
+    id: "components/core/family-law/family-law-layout";
+    page: "/family-law" | "/family-law/divorce" | "/family-law/child-custody" | "/family-law/child-support" | "/family-law/domestic-violence" | "/family-law/legal-separation" | "/family-law/grandparents-rights" | "/family-law/mediation" | "/family-law/paternity";
+  };
+  "./components/core/family-law/family-law-home.tsx": {
+    id: "components/core/family-law/family-law-home";
+    page: "/family-law";
+  };
+  "./components/core/family-law/divorce.tsx": {
+    id: "components/core/family-law/divorce";
+    page: "/family-law/divorce";
+  };
+  "./components/core/family-law/child-custody.tsx": {
+    id: "components/core/family-law/child-custody";
+    page: "/family-law/child-custody";
+  };
+  "./components/core/family-law/child-support.tsx": {
+    id: "components/core/family-law/child-support";
+    page: "/family-law/child-support";
+  };
+  "./components/core/family-law/domestic-violence.tsx": {
+    id: "components/core/family-law/domestic-violence";
+    page: "/family-law/domestic-violence";
+  };
+  "./components/core/family-law/legal-separation.tsx": {
+    id: "components/core/family-law/legal-separation";
+    page: "/family-law/legal-separation";
+  };
+  "./components/core/family-law/grandparents-rights.tsx": {
+    id: "components/core/family-law/grandparents-rights";
+    page: "/family-law/grandparents-rights";
+  };
+  "./components/core/family-law/mediation.tsx": {
+    id: "components/core/family-law/mediation";
+    page: "/family-law/mediation";
+  };
+  "./components/core/family-law/paternity.tsx": {
+    id: "components/core/family-law/paternity";
+    page: "/family-law/paternity";
+  };
+  "./components/core/estate-planning/estate-planning-layout.tsx": {
+    id: "components/core/estate-planning/estate-planning-layout";
+    page: "/estate-planning" | "/estate-planning/issues" | "/estate-planning/process" | "/estate-planning/trusts" | "/estate-planning/wills";
+  };
+  "./components/core/estate-planning/estate-planning-home.tsx": {
+    id: "components/core/estate-planning/estate-planning-home";
+    page: "/estate-planning";
+  };
+  "./components/core/estate-planning/issues.tsx": {
+    id: "components/core/estate-planning/issues";
+    page: "/estate-planning/issues";
+  };
+  "./components/core/estate-planning/process.tsx": {
+    id: "components/core/estate-planning/process";
+    page: "/estate-planning/process";
+  };
+  "./components/core/estate-planning/trusts.tsx": {
+    id: "components/core/estate-planning/trusts";
+    page: "/estate-planning/trusts";
+  };
+  "./components/core/estate-planning/wills.tsx": {
+    id: "components/core/estate-planning/wills";
+    page: "/estate-planning/wills";
+  };
+  "./routes/contact-us.tsx": {
+    id: "routes/contact-us";
+    page: "/contact-us";
+  };
 };
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
   "components/core/about-us/about-us": typeof import("./app/./components/core/about-us/about-us.tsx");
+  "components/core/family-law/family-law-layout": typeof import("./app/./components/core/family-law/family-law-layout.tsx");
+  "components/core/family-law/family-law-home": typeof import("./app/./components/core/family-law/family-law-home.tsx");
+  "components/core/family-law/divorce": typeof import("./app/./components/core/family-law/divorce.tsx");
+  "components/core/family-law/child-custody": typeof import("./app/./components/core/family-law/child-custody.tsx");
+  "components/core/family-law/child-support": typeof import("./app/./components/core/family-law/child-support.tsx");
+  "components/core/family-law/domestic-violence": typeof import("./app/./components/core/family-law/domestic-violence.tsx");
+  "components/core/family-law/legal-separation": typeof import("./app/./components/core/family-law/legal-separation.tsx");
+  "components/core/family-law/grandparents-rights": typeof import("./app/./components/core/family-law/grandparents-rights.tsx");
+  "components/core/family-law/mediation": typeof import("./app/./components/core/family-law/mediation.tsx");
+  "components/core/family-law/paternity": typeof import("./app/./components/core/family-law/paternity.tsx");
+  "components/core/estate-planning/estate-planning-layout": typeof import("./app/./components/core/estate-planning/estate-planning-layout.tsx");
+  "components/core/estate-planning/estate-planning-home": typeof import("./app/./components/core/estate-planning/estate-planning-home.tsx");
+  "components/core/estate-planning/issues": typeof import("./app/./components/core/estate-planning/issues.tsx");
+  "components/core/estate-planning/process": typeof import("./app/./components/core/estate-planning/process.tsx");
+  "components/core/estate-planning/trusts": typeof import("./app/./components/core/estate-planning/trusts.tsx");
+  "components/core/estate-planning/wills": typeof import("./app/./components/core/estate-planning/wills.tsx");
+  "routes/contact-us": typeof import("./app/./routes/contact-us.tsx");
 };

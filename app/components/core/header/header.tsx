@@ -62,13 +62,15 @@ const dropdownItemClass = `
   transition-colors
   duration-200
   hover:bg-blue-100
-  hover:text-[#0c306e]
-  active:bg-[#0c306e]
+  hover:text-primary
+  active:bg-primary
   active:text-white
 `;
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [familyLawOpen, setFamilyLawOpen] = React.useState(false);
+  const [estatePlanningOpen, setEstatePlanningOpen] = React.useState(false);
   return (
     <>
       <header
@@ -113,10 +115,10 @@ const Header = () => {
           </Link>
 
           <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className={navLinkClass}>
+            <Link to="/family-law" className={navLinkClass}>
               Family Law
               <span className={underlineClass} />
-            </div>
+            </Link>
 
             <ul tabIndex={0} className={dropdownClass}>
               <li>
@@ -133,28 +135,86 @@ const Header = () => {
                   Child Custody
                 </Link>
               </li>
-            </ul>
-          </div>
-          {/* Estate Planning */}
-          <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className={navLinkClass}>
-              Estate Planning
-              <span className={underlineClass} />
-            </div>
 
-            <ul tabIndex={0} className={dropdownClass}>
               <li>
-                <Link to="/estate-planning/wills" className={dropdownItemClass}>
-                  Wills
+                <Link
+                  to="/family-law/child-support"
+                  className={dropdownItemClass}
+                >
+                  Child Support
                 </Link>
               </li>
 
               <li>
                 <Link
-                  to="/estate-planning/trusts"
+                  to="/family-law/domestic-violence"
                   className={dropdownItemClass}
                 >
+                  Domestic Violence
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/family-law/legal-separation"
+                  className={dropdownItemClass}
+                >
+                  Legal Separation
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/family-law/grandparents-rights"
+                  className={dropdownItemClass}
+                >
+                  Grandparents Rights
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/family-law/mediation" className={dropdownItemClass}>
+                  Mediation
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/family-law/paternity" className={dropdownItemClass}>
+                  Paternity
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Estate Planning */}
+          <div className="dropdown dropdown-hover">
+            <Link to="/estate-planning" className={navLinkClass}>
+              Estate Planning
+              <span className={underlineClass} />
+            </Link>
+
+            <ul tabIndex={0} className={dropdownClass}>
+              <li>
+                <Link to="/estate-planning/issues" className={dropdownItemClass}>
+                  Issues
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/estate-planning/process" className={dropdownItemClass}>
+                  Process
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/estate-planning/trusts" className={dropdownItemClass}>
                   Trusts
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/estate-planning/wills" className={dropdownItemClass}>
+                  Wills
                 </Link>
               </li>
             </ul>
@@ -198,7 +258,7 @@ const Header = () => {
         className={`
           fixed
           inset-0
-          z-[60]
+          z-60
           bg-black/40
           transition-opacity
           duration-300
@@ -247,20 +307,137 @@ const Header = () => {
               About
             </Link>
 
-            <Link to="/family-law/divorce" className={navLinkClass}>
-              Divorce
-            </Link>
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setFamilyLawOpen((open) => !open)}
+                className={`${navLinkClass} flex items-center justify-between`}
+              >
+                <span>Family Law</span>
+                <span className="inline-flex h-6 w-6 items-center justify-center text-lg leading-none">
+                  {familyLawOpen ? "−" : "+"}
+                </span>
+              </button>
+              {familyLawOpen && (
+                <div className="ml-4 flex flex-col gap-2">
+                  <Link
+                    to="/family-law"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Overview
+                  </Link>
+                  <Link
+                    to="/family-law/divorce"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Divorce
+                  </Link>
+                  <Link
+                    to="/family-law/child-custody"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Child Custody
+                  </Link>
+                  <Link
+                    to="/family-law/child-support"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Child Support
+                  </Link>
+                  <Link
+                    to="/family-law/domestic-violence"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Domestic Violence
+                  </Link>
+                  <Link
+                    to="/family-law/legal-separation"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Legal Separation
+                  </Link>
+                  <Link
+                    to="/family-law/grandparents-rights"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Grandparents Rights
+                  </Link>
+                  <Link
+                    to="/family-law/mediation"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Mediation
+                  </Link>
+                  <Link
+                    to="/family-law/paternity"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Paternity
+                  </Link>
+                </div>
+              )}
+            </div>
 
-            <Link to="/family-law/child-custody" className={navLinkClass}>
-              Child Custody
-            </Link>
-            <Link to="/estate-planning/wills" className={navLinkClass}>
-              Wills
-            </Link>
-
-            <Link to="/estate-planning/trusts" className={navLinkClass}>
-              Trusts
-            </Link>
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setEstatePlanningOpen((open) => !open)}
+                className={`${navLinkClass} flex items-center justify-between`}
+              >
+                <span>Estate Planning</span>
+                <span className="inline-flex h-6 w-6 items-center justify-center text-lg leading-none">
+                  {estatePlanningOpen ? "−" : "+"}
+                </span>
+              </button>
+              {estatePlanningOpen && (
+                <div className="ml-4 flex flex-col gap-2">
+                  <Link
+                    to="/estate-planning"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Overview
+                  </Link>
+                  <Link
+                    to="/estate-planning/issues"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Issues
+                  </Link>
+                  <Link
+                    to="/estate-planning/process"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Process
+                  </Link>
+                  <Link
+                    to="/estate-planning/trusts"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Trusts
+                  </Link>
+                  <Link
+                    to="/estate-planning/wills"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Wills
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <Link to="/resources/blog" className={navLinkClass}>
               Blog

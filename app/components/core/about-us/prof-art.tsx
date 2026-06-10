@@ -11,7 +11,7 @@ export function ProfArt({ headerTitle, paragraphs, person }: ProfArtProps) {
   return (
     <section className="flex flex-col md:flex-row items-start gap-14 pb-8">
       <article className="flex-1 max-w-3xl prose prose-slate prose-base prose-headings:underline prose-ul:list-none">
-        <h3 className="pb-4 text-2xl font-bold text-gray-900">{headerTitle}</h3>
+        <h3 className="pb-4 text-2xl font-bold text-base-content">{headerTitle}</h3>
 
         <ul className="space-y-4">
           {paragraphs.map((item, index) => (

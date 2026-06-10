@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
@@ -6,8 +6,6 @@
 @plugin "daisyui" {
   themes: light --default;
 }
-
-
 
 @plugin "daisyui/theme" {
   name: "law";
@@ -44,16 +42,12 @@
   --noise: 0;
 }
 
-
-
 @theme {
   --font-sans:
-    "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --font-serif:
-    "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
 }
 
 html,
@@ -65,7 +59,7 @@ body {
 .dropdown-content .menu li > button:hover,
 .dropdown-content .menu li > summary:hover {
   background-color: #dbeafe !important;
-  color: #0c306e !important;
+  color: var(--color-primary) !important;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
@@ -76,8 +70,22 @@ body {
 .dropdown-content .menu li > button:active,
 .dropdown-content .menu li > summary:active,
 .dropdown-content .menu li > .active {
-  background-color: #0c306e !important;
+  background-color: var(--color-primary) !important;
   color: white !important;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}

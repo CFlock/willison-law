@@ -4,11 +4,11 @@ export interface MoreAboutProps {}
 
 export function MoreAbout() {
   return (
-    <section className="flex w-full flex-col gap-12 lg:flex-row">
+    <section className="flex w-full flex-col gap-8 sm:gap-12 lg:flex-row">
       {/* Left Column */}
       <article className="flex-1 max-w-none prose prose-slate prose-base">
-        <section className="flex flex-col gap-y-1 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
-          <h3 className="mb-1 text-2xl font-bold text-gray-900">
+        <section className="flex flex-col gap-y-1 [&_h4]:text-primary [&_h5]:text-primary">
+          <h3 className="mb-1 text-xl sm:text-2xl font-bold text-base-content">
             About Attorney Stephanie Willison
           </h3>
 
@@ -54,13 +54,13 @@ export function MoreAbout() {
 
       {/* Vertical Divider */}
       <div className="hidden lg:flex pt-12 px-2">
-        <div className="w-[2px] self-stretch rounded-full bg-accent/40"></div>
+        <div className="w-0.5 self-stretch rounded-full bg-accent/40"></div>
       </div>
 
       {/* Right Column */}
       <article className="flex-1 max-w-none prose prose-slate prose-base">
-        <section className="flex flex-col gap-y-2 [&_h4]:text-blue-900 [&_h5]:text-blue-900">
-          <h3 className="mb-1 text-2xl font-bold text-gray-900">
+        <section className="flex flex-col gap-y-2 [&_h4]:text-primary [&_h5]:text-primary">
+          <h3 className="mb-1 text-xl sm:text-2xl font-bold text-base-content">
             When Prescott Needs Our Firm, We're There
           </h3>
 
