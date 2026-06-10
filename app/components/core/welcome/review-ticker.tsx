@@ -6,8 +6,8 @@ export default function ReviewTicker() {
   const position = useRef(0);
 
   // 💎 slower base motion (luxury drift)
-  const speed = useRef(0.18);
-  const targetSpeed = useRef(0.18);
+  const speed = useRef(0.36);
+  const targetSpeed = useRef(0.36);
 
   const items = [
     "Professional and highly responsive legal team",
@@ -48,7 +48,7 @@ export default function ReviewTicker() {
     <div
       className="relative w-screen overflow-hidden bg-base-100/60 backdrop-blur-md py-3 border-y border-white/10"
       onMouseEnter={() => (targetSpeed.current = 0.06)} // near pause
-      onMouseLeave={() => (targetSpeed.current = 0.18)} // slow drift
+      onMouseLeave={() => (targetSpeed.current = 0.36)} // slow drift
     >
       {/* edge fades */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-base-100 to-transparent z-10" />
