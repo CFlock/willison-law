@@ -143,7 +143,7 @@ export function Welcome() {
       </section>
 
       <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
-        <div className="flex flex-row items-center justify">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <article className="prose prose-base max-w-6xl mx-auto text-lg">
             <h2 className="text-primary ">
               The Dependable Legal Advocate to Turn to When Family Dynamics
@@ -176,17 +176,20 @@ export function Welcome() {
               first order of business.
             </p>
           </article>
-          <div className="card w-96 shadow-sm bg-size-cover">
+          <div className="card mx-auto w-full max-w-md shadow-sm">
             <figure className="overflow-hidden rounded-3xl">
               <img
                 src={moumtain}
                 alt="Mountain"
                 className="
-                    rounded-3xl
-                    shadow-xl
-                    transition-transform duration-500
-                    hover:scale-105
-                  "
+          w-full
+          h-auto
+          rounded-3xl
+          shadow-xl
+          transition-transform
+          duration-500
+          hover:scale-105
+        "
               />
             </figure>
           </div>
@@ -304,9 +307,21 @@ export function Welcome() {
                 together becomes our first order of business.
               </p>
             </article>
-            <button className="btn btn-outline btn-accent px-10 text-primary ml-auto">
-              <Link to="/about-us">Meet Attorney Stephanie Willison</Link>
-            </button>
+            <Link
+              to="/about-us"
+              className="
+                btn
+                btn-outline
+                btn-accent
+                mt-6
+                w-full
+                text-primary
+                md:ml-auto
+                md:w-auto
+              "
+            >
+              Meet Attorney Stephanie Willison
+            </Link>
           </div>
         </div>
       </section>
