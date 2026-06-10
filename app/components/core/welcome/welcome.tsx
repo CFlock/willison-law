@@ -143,11 +143,21 @@ export function Welcome() {
         </div>
       </section>
       <>
-        <ReviewTicker />
+        {/* Desktop: ticker */}
+        <div className="hidden sm:block">
+          <ReviewTicker />
 
-        <div className="flex justify-end pr-2">
+          <div className="flex justify-end pr-2 mt-2">
+            <button className="btn btn-outline btn-primary btn-sm">
+              View More Testimonials
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile: centered CTA only */}
+        <div className="sm:hidden flex justify-center mt-4">
           <button className="btn btn-outline btn-primary btn-sm">
-            View More Testimonials
+            View Testimonials
           </button>
         </div>
       </>
