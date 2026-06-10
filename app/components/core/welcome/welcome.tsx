@@ -2,6 +2,7 @@ import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
 import moumtain from "/app/images/image.png";
 import { Link } from "react-router";
+import ReviewTicker from "./review-ticker";
 export function Welcome() {
   const [scrollY, setScrollY] = React.useState(0);
   const [smoothProgress, setSmoothProgress] = React.useState(0);
@@ -80,7 +81,7 @@ export function Welcome() {
                   className="text-rotate text-4xl font-light tracking-[0.08em] text-primary sm:text-5xl md:text-7xl lg:text-8xl"
                   style={
                     {
-                      ["--duration" as any]: "6s",
+                      ["--duration" as any]: "7s",
                     } as React.CSSProperties
                   }
                 >
@@ -141,7 +142,7 @@ export function Welcome() {
           </div>
         </div>
       </section>
-
+      <ReviewTicker />
       <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <article className="prose prose-base max-w-6xl mx-auto text-lg">
