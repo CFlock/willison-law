@@ -83,8 +83,8 @@ const Header = () => {
           w-full
           items-center
           border-b
-          border-base-300/70
-          bg-base-100/90
+          border-primary
+          bg-base-100/95
           px-6
           py-4
           backdrop-blur-md
@@ -195,19 +195,28 @@ const Header = () => {
 
             <ul tabIndex={0} className={dropdownClass}>
               <li>
-                <Link to="/estate-planning/issues" className={dropdownItemClass}>
+                <Link
+                  to="/estate-planning/issues"
+                  className={dropdownItemClass}
+                >
                   Issues
                 </Link>
               </li>
 
               <li>
-                <Link to="/estate-planning/process" className={dropdownItemClass}>
+                <Link
+                  to="/estate-planning/process"
+                  className={dropdownItemClass}
+                >
                   Process
                 </Link>
               </li>
 
               <li>
-                <Link to="/estate-planning/trusts" className={dropdownItemClass}>
+                <Link
+                  to="/estate-planning/trusts"
+                  className={dropdownItemClass}
+                >
                   Trusts
                 </Link>
               </li>
@@ -245,6 +254,9 @@ const Header = () => {
             Contact
             <span className={underlineClass} />
           </Link>
+          <a href="tel:+19284453334" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary text-white">
+            (928) 445-3534
+          </a>
         </nav>
 
         {/* Mobile Button */}
@@ -449,6 +461,9 @@ const Header = () => {
             <Link to="/contact-us" className={navLinkClass}>
               Contact
             </Link>
+            <a href="tel:+19284453334" className="btn btn-primary">
+              (928) 445-3534
+            </a>
           </nav>
         </aside>
       </div>

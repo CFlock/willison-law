@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
-
+import moumtain from "/app/images/image.png";
+import { Link } from "react-router";
 export function Welcome() {
   const [scrollY, setScrollY] = React.useState(0);
   const [smoothProgress, setSmoothProgress] = React.useState(0);
@@ -71,7 +72,10 @@ export function Welcome() {
                 transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
               }}
             >
-              <div className="inline-flex border border-accent px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-7">
+              <div className="relative inline-flex border border-accent px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-7">
+                {/* Corner decorations */}
+                <div className="absolute -top-5 -left-5 w-6 h-6 border-t border-l border-primary" />
+                <div className="absolute -bottom-5 -right-5 w-6 h-6 border-b border-r border-primary" />
                 <span
                   className="text-rotate text-4xl font-light tracking-[0.08em] text-primary sm:text-5xl md:text-7xl lg:text-8xl"
                   style={
@@ -112,7 +116,7 @@ export function Welcome() {
         </div>
       </section>
 
-      <section className="relative z-10 bg-base-100 px-6 py-24 md:px-12">
+      <section className="relative z-10 bg-primary/5 px-6 py-24 md:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
             <p className="mb-6 text-lg font-semibold uppercase tracking-[0.25em] text-secondary md:text-xl">
@@ -132,14 +136,14 @@ export function Welcome() {
             </p>
 
             <button className="btn btn-outline btn-accent px-10 text-primary">
-              Contact Us
+              <Link to="/contact-us">Contact Us</Link>
             </button>
           </div>
         </div>
       </section>
 
       <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
-        <div className="flex flex-col items-center justify">
+        <div className="flex flex-row items-center justify">
           <article className="prose prose-base max-w-6xl mx-auto text-lg">
             <h2 className="text-primary ">
               The Dependable Legal Advocate to Turn to When Family Dynamics
@@ -172,6 +176,20 @@ export function Welcome() {
               first order of business.
             </p>
           </article>
+          <div className="card w-96 shadow-sm bg-size-cover">
+            <figure className="overflow-hidden rounded-3xl">
+              <img
+                src={moumtain}
+                alt="Mountain"
+                className="
+                    rounded-3xl
+                    shadow-xl
+                    transition-transform duration-500
+                    hover:scale-105
+                  "
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -261,6 +279,34 @@ export function Welcome() {
                 these family law matters.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
+        <div className="mx-auto grid max-w-6xl gap-40">
+          <div className="relative flex flex-col border border-accent px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-7">
+            <article className="prose prose-base max-w-6xl mx-auto text-lg">
+              <h2 className="text-primary"> - About Our Founding Lawyer</h2>
+              <h3>Standing Up for What Matters Most</h3>
+              <p className="mb-6">
+                We offer comprehensive guidance through a variety of family law
+                and estate planning cases, from divorce and child custody to
+                paternity and property division, to planning for your future
+                with a will or trust. Our level of experience in the area of
+                family law surpasses that of many other attorneys in the
+                Prescott area. Families turn to Willison Law, PC when they need
+                further legal assistance to help them protect what matters most
+                to them, whether it be their parental rights, child or spousal
+                support, or wealth preservation. By working with a Prescott
+                Family Lawyer at our firm, developing a plan-of-action designed
+                to achieve your best interests and keep you and your loved ones
+                together becomes our first order of business.
+              </p>
+            </article>
+            <button className="btn btn-outline btn-accent px-10 text-primary ml-auto">
+              <Link to="/about-us">Meet Attorney Stephanie Willison</Link>
+            </button>
           </div>
         </div>
       </section>
