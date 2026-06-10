@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { getImageUrl } from "../../../utils";
 export interface MoreAboutProps {}
 
 export function MoreAbout() {
@@ -67,7 +67,7 @@ export function MoreAbout() {
           <div className="flex flex-col gap-1">
             <div className="flex flex-col">
               <p className="mb-1 leading-relaxed">
-                "Stephanie is a knowledgeable and respected attorney in  Northern
+                "Stephanie is a knowledgeable and respected attorney in Northern
                 Arizona."
               </p>
 
@@ -91,7 +91,18 @@ export function MoreAbout() {
                 great experience and knowledge."
               </p>
 
-              <h5 className="mt-0 text-sm text-primary">Personal Injury Lawyer</h5>
+              <h5 className="mt-0 text-sm text-primary">
+                Personal Injury Lawyer
+              </h5>
+            </div>
+          </div>
+          <div className="avatar">
+            <div className="mask mask-squircle w-32 sm:w-40 md:w-48 lg:w-56 overflow-hidden">
+              <img
+                src={getImageUrl("steph2.png")}
+                alt="Stephanie Willison"
+                className="w-full h-full object-cover object-center scale-110"
+              />
             </div>
           </div>
         </section>
