@@ -142,8 +142,17 @@ export function Welcome() {
           </div>
         </div>
       </section>
-      <ReviewTicker />
-      <section className="relative z-10 bg-base-100 px-6 pb-32 pt-10 md:px-12">
+      <>
+        <ReviewTicker />
+
+        <div className="flex justify-end pr-2">
+          <button className="btn btn-outline btn-primary btn-sm">
+            View More Testimonials
+          </button>
+        </div>
+      </>
+
+      <section className="relative z-10 bg-base-100 px-6 pb-24 pt-10 md:px-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <article className="prose prose-base max-w-6xl mx-auto text-lg">
             <h2 className="text-primary ">
