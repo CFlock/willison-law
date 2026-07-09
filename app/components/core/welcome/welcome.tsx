@@ -148,17 +148,17 @@ export function Welcome() {
           <ReviewTicker />
 
           <div className="flex justify-end pr-2 mt-2">
-            <button className="btn btn-outline btn-primary btn-sm">
+            <Link to="/testimonials" className="btn btn-outline btn-primary btn-sm">
               View More Testimonials
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Mobile: centered CTA only */}
         <div className="sm:hidden flex justify-center mt-4">
-          <button className="btn btn-outline btn-primary btn-sm">
+          <Link to="/testimonials" className="btn btn-outline btn-primary btn-sm">
             View Testimonials
-          </button>
+          </Link>
         </div>
       </>
 

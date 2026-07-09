@@ -32,6 +32,14 @@ const sections = [
 export default function Page() {
   return (
     <EstatePlanningPage title={title} description={description}>
+      <div className="space-y-6">
+        {paragraphs.map((p, i) => (
+          <p key={i} className="mt-4">
+            {p}
+          </p>
+        ))}
+      </div>
+
       {sections.map((section, index) => (
         <section key={index}>
           <h2 className="text-xl sm:text-2xl font-semibold text-primary">
