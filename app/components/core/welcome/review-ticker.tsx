@@ -46,7 +46,7 @@ export default function ReviewTicker() {
 
   return (
     <div
-      className="relative w-screen overflow-hidden bg-base-100/60 backdrop-blur-md py-3 border-y border-white/10"
+      className="relative overflow-hidden bg-base-100/60 backdrop-blur-md py-3 border-y border-white/10"
       onMouseEnter={() => (targetSpeed.current = 0.06)} // near pause
       onMouseLeave={() => (targetSpeed.current = 0.36)} // slow drift
     >
@@ -57,7 +57,7 @@ export default function ReviewTicker() {
       {/* track */}
       <div
         ref={containerRef}
-        className="flex w-max gap-10 whitespace-nowrap will-change-transform"
+        className="flex min-w-full gap-10 whitespace-nowrap will-change-transform"
       >
         {[...items, ...items].map((text, i) => (
           <div key={i} className="flex items-center gap-3 text-sm">

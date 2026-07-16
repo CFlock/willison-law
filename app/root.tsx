@@ -53,7 +53,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
 
-      <body>
+      <body className="min-h-screen bg-base-100 text-base-content antialiased overflow-x-hidden">
         <Header />
 
         <main>{children}</main>

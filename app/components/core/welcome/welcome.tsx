@@ -1,15 +1,15 @@
 import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
-import moumtain from "/app/images/image.png";
+import mountain from "/app/images/image.png";
 import { Link } from "react-router";
 import ReviewTicker from "./review-ticker";
 export function Welcome() {
-  const [scrollY, setScrollY] = React.useState(0);
   const [smoothProgress, setSmoothProgress] = React.useState(0);
+  const scrollYRef = React.useRef(0);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      scrollYRef.current = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll, {
@@ -25,20 +25,15 @@ export function Welcome() {
     let animationFrame: number;
 
     const animate = () => {
-      const target = Math.min(scrollY / 700, 1);
-
-      setSmoothProgress((prev) => {
-        const next = prev + (target - prev) * 0.08;
-        return next;
-      });
-
+      const target = Math.min(scrollYRef.current / 700, 1);
+      setSmoothProgress((prev) => prev + (target - prev) * 0.08);
       animationFrame = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [scrollY]);
+  }, []);
 
   /*
    * Subtle Scroll Animation
@@ -63,7 +58,7 @@ export function Welcome() {
   return (
     <section className="bg-base-100">
       {/* Hero */}
-      <section className="relative min-h-[115svh]">
+      <section className="relative min-h-screen">
         <div className="sticky top-0 flex min-h-screen items-center justify-center px-6 md:px-12">
           <div className="flex w-full flex-col items-center justify-center -translate-y-8">
             {/* Rotating Text */}
@@ -136,9 +131,9 @@ export function Welcome() {
               child, or proceed with other related family law matters.
             </p>
 
-            <button className="btn btn-outline btn-accent px-10 text-primary">
-              <Link to="/contact-us">Contact Us</Link>
-            </button>
+            <Link to="/contact-us" className="btn btn-outline btn-accent px-10 text-primary">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
@@ -147,8 +142,8 @@ export function Welcome() {
         <div className="hidden sm:block">
           <ReviewTicker />
 
-          <div className="flex justify-end pr-2 mt-2">
-            <Link to="/testimonials" className="btn btn-outline btn-primary btn-sm">
+          <div className="flex justify-end pr-6 mt-4">
+            <Link to="/testimonials" className="btn btn-outline btn-primary btn-md px-8">
               View More Testimonials
             </Link>
           </div>
@@ -156,7 +151,7 @@ export function Welcome() {
 
         {/* Mobile: centered CTA only */}
         <div className="sm:hidden flex justify-center mt-4">
-          <Link to="/testimonials" className="btn btn-outline btn-primary btn-sm">
+          <Link to="/testimonials" className="btn btn-outline btn-primary btn-md px-8">
             View Testimonials
           </Link>
         </div>
@@ -199,7 +194,7 @@ export function Welcome() {
           <div className="card mx-auto w-full max-w-md shadow-sm">
             <figure className="overflow-hidden rounded-3xl">
               <img
-                src={moumtain}
+                src={mountain}
                 alt="Mountain"
                 className="
           w-full

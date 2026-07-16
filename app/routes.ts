@@ -45,5 +45,17 @@ export default [
     ],
   ),
 
+  route(
+    "resources",
+    "./routes/resources-layout.tsx",
+    [
+      route("blog", "./routes/resources/blog.tsx"),
+      route(
+        "parent-planning-guide",
+        "./routes/resources/parent-planning-guide.tsx",
+      ),
+    ],
+  ),
   route("contact-us", "./routes/contact-us.tsx"),
+  route("testimonials", "./routes/testimonials.tsx"),
 ] satisfies RouteConfig;

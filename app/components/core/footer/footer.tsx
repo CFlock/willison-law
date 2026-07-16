@@ -17,23 +17,25 @@ const Footer = () => {
         </aside>
         <nav>
           <h6 className="footer-title">Important Links</h6>
-          <a className="link link-hover">
-            <Link to="/about-us">About</Link>
-          </a>
-          <a className="link link-hover"><Link to="/contact-us">Contact Us</Link></a>
-          <a className="link link-hover">Testimonials</a>
+          <Link to="/about-us" className="link link-hover">
+            About
+          </Link>
+          <Link to="/contact-us" className="link link-hover">
+            Contact Us
+          </Link>
+          <Link to="/testimonials" className="link link-hover">
+            Testimonials
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Contact Us</h6>
-          <a className="link link-hover"> 141 S. McCormick St #101</a>
-          <a className="link link-hover">Prescott AZ 86303</a>
-          <a className="link link-hover">
-            <a
-              href="tel:+19284453334"
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary text-white"
-            >
-              (928) 445-3534
-            </a>
+          <p className="text-base-content/70">141 S. McCormick St #101</p>
+          <p className="text-base-content/70">Prescott AZ 86303</p>
+          <a
+            href="tel:+19284453334"
+            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-primary text-white"
+          >
+            (928) 445-3534
           </a>
         </nav>
         <nav>

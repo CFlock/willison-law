@@ -59,7 +59,19 @@ type Pages = {
   "/estate-planning/wills": {
     params: {};
   };
+  "/resources": {
+    params: {};
+  };
+  "/resources/blog": {
+    params: {};
+  };
+  "/resources/parent-planning-guide": {
+    params: {};
+  };
   "/contact-us": {
+    params: {};
+  };
+  "/testimonials": {
     params: {};
   };
 };
@@ -67,7 +79,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about-us" | "/family-law" | "/family-law/divorce" | "/family-law/child-custody" | "/family-law/child-support" | "/family-law/domestic-violence" | "/family-law/legal-separation" | "/family-law/grandparents-rights" | "/family-law/mediation" | "/family-law/paternity" | "/estate-planning" | "/estate-planning/issues" | "/estate-planning/process" | "/estate-planning/trusts" | "/estate-planning/wills" | "/contact-us";
+    page: "/" | "/about-us" | "/family-law" | "/family-law/divorce" | "/family-law/child-custody" | "/family-law/child-support" | "/family-law/domestic-violence" | "/family-law/legal-separation" | "/family-law/grandparents-rights" | "/family-law/mediation" | "/family-law/paternity" | "/estate-planning" | "/estate-planning/issues" | "/estate-planning/process" | "/estate-planning/trusts" | "/estate-planning/wills" | "/resources" | "/resources/blog" | "/resources/parent-planning-guide" | "/contact-us" | "/testimonials";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -141,9 +153,25 @@ type RouteFiles = {
     id: "components/core/estate-planning/wills";
     page: "/estate-planning/wills";
   };
+  "./routes/resources-layout.tsx": {
+    id: "routes/resources-layout";
+    page: "/resources" | "/resources/blog" | "/resources/parent-planning-guide";
+  };
+  "./routes/resources/blog.tsx": {
+    id: "routes/resources/blog";
+    page: "/resources/blog";
+  };
+  "./routes/resources/parent-planning-guide.tsx": {
+    id: "routes/resources/parent-planning-guide";
+    page: "/resources/parent-planning-guide";
+  };
   "./routes/contact-us.tsx": {
     id: "routes/contact-us";
     page: "/contact-us";
+  };
+  "./routes/testimonials.tsx": {
+    id: "routes/testimonials";
+    page: "/testimonials";
   };
 };
 
@@ -167,5 +195,9 @@ type RouteModules = {
   "components/core/estate-planning/process": typeof import("./app/./components/core/estate-planning/process.tsx");
   "components/core/estate-planning/trusts": typeof import("./app/./components/core/estate-planning/trusts.tsx");
   "components/core/estate-planning/wills": typeof import("./app/./components/core/estate-planning/wills.tsx");
+  "routes/resources-layout": typeof import("./app/./routes/resources-layout.tsx");
+  "routes/resources/blog": typeof import("./app/./routes/resources/blog.tsx");
+  "routes/resources/parent-planning-guide": typeof import("./app/./routes/resources/parent-planning-guide.tsx");
   "routes/contact-us": typeof import("./app/./routes/contact-us.tsx");
+  "routes/testimonials": typeof import("./app/./routes/testimonials.tsx");
 };

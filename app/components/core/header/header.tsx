@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
-import "./Header.css";
 
 const navLinkClass = `
   group
@@ -71,6 +70,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [familyLawOpen, setFamilyLawOpen] = React.useState(false);
   const [estatePlanningOpen, setEstatePlanningOpen] = React.useState(false);
+  const [resourcesOpen, setResourcesOpen] = React.useState(false);
   return (
     <>
       <header
@@ -231,10 +231,14 @@ const Header = () => {
 
           {/* Resources */}
           <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className={navLinkClass}>
-              Resources
-              <span className={underlineClass} />
-            </div>
+            <button
+            type="button"
+            aria-haspopup="menu"
+            className={navLinkClass}
+          >
+            Resources
+            <span className={underlineClass} />
+          </button>
 
             <ul tabIndex={0} className={dropdownClass}>
               <li>
@@ -244,8 +248,17 @@ const Header = () => {
               </li>
 
               <li>
-                <Link to="/resources/faqs" className={dropdownItemClass}>
-                  FAQs
+                <Link to="/testimonials" className={dropdownItemClass}>
+                  Testimonials
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/resources/parent-planning-guide"
+                  className={dropdownItemClass}
+                >
+                  Parent Planning Guide
                 </Link>
               </li>
             </ul>
@@ -260,7 +273,13 @@ const Header = () => {
         </nav>
 
         {/* Mobile Button */}
-        <button onClick={() => setMobileOpen(true)} className="lg:hidden">
+        <button
+          onClick={() => setMobileOpen(true)}
+          className="lg:hidden"
+          aria-controls="mobile-navigation"
+          aria-expanded={mobileOpen}
+          aria-label="Open navigation menu"
+        >
           <Menu className="h-6 w-6" />
         </button>
       </header>
@@ -286,14 +305,15 @@ const Header = () => {
         <aside
           className={`
             absolute
-            right-0
+            right-6
             top-0
             flex
             h-full
             w-80
+            max-w-[calc(100vw-1.5rem)]
             flex-col
             bg-base-100
-            p-8
+            p-6
             shadow-2xl
             transition-transform
             duration-500
@@ -305,17 +325,20 @@ const Header = () => {
           <div className="mb-10 flex items-center justify-between">
             <img src="/logo.png" className="h-10 w-auto" alt="Logo" />
 
-            <button onClick={() => setMobileOpen(false)}>
+            <button
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close navigation menu"
+            >
               <X className="h-6 w-6" />
             </button>
           </div>
 
           <nav className="flex flex-col gap-6">
-            <Link to="/" className={navLinkClass}>
+            <Link to="/" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Home
             </Link>
 
-            <Link to="/about-us" className={navLinkClass}>
+            <Link to="/about-us" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               About
             </Link>
 
@@ -451,17 +474,52 @@ const Header = () => {
               )}
             </div>
 
-            <Link to="/resources/blog" className={navLinkClass}>
-              Blog
-            </Link>
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setResourcesOpen((open) => !open)}
+                className={`${navLinkClass} flex items-center justify-between`}
+              >
+                <span>Resources</span>
+                <span className="inline-flex h-6 w-6 items-center justify-center text-lg leading-none">
+                  {resourcesOpen ? "−" : "+"}
+                </span>
+              </button>
+              {resourcesOpen && (
+                <div className="ml-4 flex flex-col gap-2">
+                  <Link
+                    to="/resources/blog"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Blog
+                  </Link>
+                  <Link
+                    to="/testimonials"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Testimonials
+                  </Link>
+                  <Link
+                    to="/resources/parent-planning-guide"
+                    className={navLinkClass}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Parent Planning Guide
+                  </Link>
+                </div>
+              )}
+            </div>
 
-            <Link to="/resources/faqs" className={navLinkClass}>
-              FAQs
-            </Link>
-            <Link to="/contact-us" className={navLinkClass}>
+            <Link to="/contact-us" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Contact
             </Link>
-            <a href="tel:+19284453334" className="btn btn-primary">
+            <a
+              href="tel:+19284453334"
+              className="btn btn-primary"
+              onClick={() => setMobileOpen(false)}
+            >
               (928) 445-3534
             </a>
           </nav>
