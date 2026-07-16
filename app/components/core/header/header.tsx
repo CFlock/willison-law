@@ -26,15 +26,18 @@ const underlineClass = `
   absolute
   left-0
   bottom-[6px]
-  h-[1.5px]
+  h-[2px]
   w-full
-  origin-left
-  scale-x-0
   bg-accent
+  origin-right
+  scale-x-0
+  transform-gpu
   transition-transform
   duration-500
   ease-[cubic-bezier(0.77,0,0.175,1)]
+  group-hover:origin-left
   group-hover:scale-x-100
+  will-change-transform
 `;
 
 const dropdownClass = `

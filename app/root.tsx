@@ -53,10 +53,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
 
-      <body className="min-h-screen bg-base-100 text-base-content antialiased overflow-x-hidden">
+      <body className="flex min-h-screen flex-col bg-base-100 text-base-content antialiased overflow-x-hidden">
         <Header />
 
-        <main>{children}</main>
+        <main className="flex-1 min-h-screen">{children}</main>
         <Footer />
         <ScrollRestoration />
 
