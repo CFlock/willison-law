@@ -162,8 +162,10 @@ export default function Page() {
   return (
     <main className="mx-auto flex flex-col w-full max-w-6xl gap-12 px-6 pt-36 pb-24">
       <article className="prose prose-base mx-auto text-lg">
-        <h1 className="text-primary text-4xl font-semibold tracking-tight">Contact Us</h1>
-        <div className="mt-0.5 h-1 w-24 rounded-full bg-accent" />
+        <div className="flex flex-col items-start gap-1.5">
+          <h1 className="!mb-0 text-primary text-4xl font-semibold tracking-tight">Contact Us</h1>
+          <div className="h-1 w-24 rounded-full bg-accent" />
+        </div>
         <h2 className="text-xl sm:text-2xl font-semibold text-primary text-center pb-0">
           Choose the Right Family Law Attorney to Represent You
         </h2>
