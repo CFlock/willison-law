@@ -74,6 +74,27 @@ const Header = () => {
   const [familyLawOpen, setFamilyLawOpen] = React.useState(false);
   const [estatePlanningOpen, setEstatePlanningOpen] = React.useState(false);
   const [resourcesOpen, setResourcesOpen] = React.useState(false);
+  const [activeDesktopDropdown, setActiveDesktopDropdown] = React.useState<
+    "familyLaw" | "estatePlanning" | "resources" | null
+  >(null);
+
+  const closeDesktopDropdown = React.useCallback(() => {
+    setActiveDesktopDropdown(null);
+  }, []);
+
+  React.useEffect(() => {
+    if (!activeDesktopDropdown) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.closest("[data-desktop-dropdown]")) return;
+      setActiveDesktopDropdown(null);
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [activeDesktopDropdown]);
+
   return (
     <>
       <header
@@ -117,154 +138,193 @@ const Header = () => {
             <span className={underlineClass} />
           </Link>
 
-          <div className="dropdown dropdown-hover">
-            <Link to="/family-law" className={navLinkClass}>
+          <div
+            data-desktop-dropdown
+            className="relative"
+            onMouseEnter={() => setActiveDesktopDropdown("familyLaw")}
+            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "familyLaw" ? null : current)}
+          >
+            <Link
+              to="/family-law"
+              className={navLinkClass}
+              onClick={closeDesktopDropdown}
+            >
               Family Law
               <span className={underlineClass} />
             </Link>
 
-            <ul tabIndex={0} className={dropdownClass}>
-              <li>
-                <Link to="/family-law/divorce" className={dropdownItemClass}>
-                  Divorce
-                </Link>
-              </li>
+            {activeDesktopDropdown === "familyLaw" ? (
+              <ul tabIndex={0} className={`${dropdownClass} absolute`}>
+                <li>
+                  <Link to="/family-law/divorce" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Divorce
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/family-law/child-custody"
-                  className={dropdownItemClass}
-                >
-                  Child Custody
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/family-law/child-custody"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Child Custody
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/family-law/child-support"
-                  className={dropdownItemClass}
-                >
-                  Child Support
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/family-law/child-support"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Child Support
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/family-law/domestic-violence"
-                  className={dropdownItemClass}
-                >
-                  Domestic Violence
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/family-law/domestic-violence"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Domestic Violence
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/family-law/legal-separation"
-                  className={dropdownItemClass}
-                >
-                  Legal Separation
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/family-law/legal-separation"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Legal Separation
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/family-law/grandparents-rights"
-                  className={dropdownItemClass}
-                >
-                  Grandparents Rights
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/family-law/grandparents-rights"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Grandparents Rights
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/family-law/mediation" className={dropdownItemClass}>
-                  Mediation
-                </Link>
-              </li>
+                <li>
+                  <Link to="/family-law/mediation" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Mediation
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/family-law/paternity" className={dropdownItemClass}>
-                  Paternity
-                </Link>
-              </li>
-            </ul>
+                <li>
+                  <Link to="/family-law/paternity" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Paternity
+                  </Link>
+                </li>
+              </ul>
+            ) : null}
           </div>
 
           {/* Estate Planning */}
-          <div className="dropdown dropdown-hover">
-            <Link to="/estate-planning" className={navLinkClass}>
+          <div
+            data-desktop-dropdown
+            className="relative"
+            onMouseEnter={() => setActiveDesktopDropdown("estatePlanning")}
+            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "estatePlanning" ? null : current)}
+          >
+            <Link
+              to="/estate-planning"
+              className={navLinkClass}
+              onClick={closeDesktopDropdown}
+            >
               Estate Planning
               <span className={underlineClass} />
             </Link>
 
-            <ul tabIndex={0} className={dropdownClass}>
-              <li>
-                <Link
-                  to="/estate-planning/issues"
-                  className={dropdownItemClass}
-                >
-                  Issues
-                </Link>
-              </li>
+            {activeDesktopDropdown === "estatePlanning" ? (
+              <ul tabIndex={0} className={`${dropdownClass} absolute`}>
+                <li>
+                  <Link
+                    to="/estate-planning/issues"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Issues
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/estate-planning/process"
-                  className={dropdownItemClass}
-                >
-                  Process
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/estate-planning/process"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Process
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/estate-planning/trusts"
-                  className={dropdownItemClass}
-                >
-                  Trusts
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/estate-planning/trusts"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Trusts
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/estate-planning/wills" className={dropdownItemClass}>
-                  Wills
-                </Link>
-              </li>
-            </ul>
+                <li>
+                  <Link to="/estate-planning/wills" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Wills
+                  </Link>
+                </li>
+              </ul>
+            ) : null}
           </div>
 
           {/* Resources */}
-          <div className="dropdown dropdown-hover">
-            <button
-            type="button"
-            aria-haspopup="menu"
-            className={navLinkClass}
+          <div
+            data-desktop-dropdown
+            className="relative"
+            onMouseEnter={() => setActiveDesktopDropdown("resources")}
+            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "resources" ? null : current)}
           >
-            Resources
-            <span className={underlineClass} />
-          </button>
+            <button
+              type="button"
+              aria-haspopup="menu"
+              className={navLinkClass}
+              onClick={closeDesktopDropdown}
+            >
+              Resources
+              <span className={underlineClass} />
+            </button>
 
-            <ul tabIndex={0} className={dropdownClass}>
-              <li>
-                <Link to="/resources/blog" className={dropdownItemClass}>
-                  Blog
-                </Link>
-              </li>
+            {activeDesktopDropdown === "resources" ? (
+              <ul tabIndex={0} className={`${dropdownClass} absolute`}>
+                <li>
+                  <Link to="/resources/blog" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Blog
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/testimonials" className={dropdownItemClass}>
-                  Testimonials
-                </Link>
-              </li>
+                <li>
+                  <Link to="/testimonials" className={dropdownItemClass} onClick={closeDesktopDropdown}>
+                    Testimonials
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/resources/parent-planning-guide"
-                  className={dropdownItemClass}
-                >
-                  Parent Planning Guide
-                </Link>
-              </li>
-            </ul>
+                <li>
+                  <Link
+                    to="/resources/parent-planning-guide"
+                    className={dropdownItemClass}
+                    onClick={closeDesktopDropdown}
+                  >
+                    Parent Planning Guide
+                  </Link>
+                </li>
+              </ul>
+            ) : null}
           </div>
           <Link to="/contact-us" className={navLinkClass}>
             Contact

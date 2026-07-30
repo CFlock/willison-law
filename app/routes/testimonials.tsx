@@ -1,4 +1,6 @@
 import * as React from "react";
+import type { Route } from "./+types/testimonials";
+import { buildPageMeta } from "../seo";
 
 const reviews = [
   {
@@ -42,6 +44,15 @@ const reviews = [
     author: "Tyler O.",
   },
 ];
+
+export function meta({}: Route.MetaArgs) {
+  return buildPageMeta({
+    title: "Client Testimonials",
+    description:
+      "See what clients say about working with Stephanie Willison and the family law team at Willison Law, PC.",
+    path: "/testimonials",
+  });
+}
 
 export default function Page() {
   return (

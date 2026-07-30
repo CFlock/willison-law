@@ -123,3 +123,70 @@ body {
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
 }
+
+/* Lawmatics embedded form button theme override */
+#lm-embedded-target,
+#lm-embedded-target * {
+  box-sizing: border-box !important;
+}
+
+#lm-embedded-target {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+#lm-embedded-target button,
+#lm-embedded-target input[type="submit"],
+#lm-embedded-target input[type="button"],
+#lm-embedded-target a,
+#lm-embedded-target .lm-button,
+#lm-embedded-target .button,
+#lm-embedded-target .submit,
+#lm-embedded-target .submit-button,
+#lm-embedded-target [role="button"] {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary-content) !important;
+  background: var(--color-primary) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  fill: var(--color-primary-content) !important;
+  text-shadow: none !important;
+}
+
+#lm-embedded-target button:hover,
+#lm-embedded-target input[type="submit"]:hover,
+#lm-embedded-target input[type="button"]:hover,
+#lm-embedded-target a:hover,
+#lm-embedded-target .lm-button:hover,
+#lm-embedded-target .button:hover,
+#lm-embedded-target .submit:hover,
+#lm-embedded-target .submit-button:hover,
+#lm-embedded-target [role="button"]:hover {
+  background-color: #0a275a !important;
+  border-color: #0a275a !important;
+}
+
+#lm-embedded-target button[type="submit"],
+#lm-embedded-target input[type="submit"],
+#lm-embedded-target .lm-button,
+#lm-embedded-target .button,
+#lm-embedded-target .submit,
+#lm-embedded-target .submit-button,
+#lm-embedded-target [role="button"] {
+  border-radius: var(--radius-box) !important;
+}
+
+#lm-embedded-target * {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#lm-embedded-target > * {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}

@@ -1,3 +1,15 @@
+import { buildPageMeta } from "../../seo";
+import type { Route } from "../+types/blog";
+
+export function meta({}: Route.MetaArgs) {
+  return buildPageMeta({
+    title: "Family Law Blog",
+    description:
+      "Read helpful legal insights on Arizona divorce, custody, mediation, and family law topics from Willison Law, PC.",
+    path: "/resources/blog",
+  });
+}
+
 export default function Page() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-36 pb-24">
