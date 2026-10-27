@@ -13,6 +13,7 @@ import Header from "./components/core/header/header";
 import Footer from "./components/core/footer/footer";
 import React from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { LOCAL_BUSINESS_SCHEMA } from "./seo";
 
 export const links: Route.LinksFunction = () => [
@@ -73,6 +74,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
         <ScrollRestoration />
 
         <Scripts />
