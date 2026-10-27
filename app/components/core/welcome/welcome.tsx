@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ProfArt } from "../about-us/prof-art";
 import mountain from "/app/images/image.png";
+import watson from "/app/images/watson3.png";
 import { Link } from "react-router";
 import ReviewTicker from "./review-ticker";
 export function Welcome() {
@@ -23,9 +24,12 @@ export function Welcome() {
 
   React.useEffect(() => {
     let animationFrame: number;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const animate = () => {
-      const target = Math.min(scrollYRef.current / 700, 1);
+      const target = reduceMotion ? 0 : Math.min(scrollYRef.current / 700, 1);
       setSmoothProgress((prev) => prev + (target - prev) * 0.08);
       animationFrame = requestAnimationFrame(animate);
     };
@@ -58,9 +62,13 @@ export function Welcome() {
   return (
     <section className="bg-base-100">
       {/* Hero */}
-      <section className="relative min-h-screen">
+      <section className="relative min-h-screen bg-white">
+        <div
+          className="absolute inset-x-[20px] bottom-[20px] top-[101px] rounded-sm lg:top-[125px] bg-cover bg-center"
+          style={{ backgroundImage: `url(${watson})` }}
+        />
         <div className="sticky top-0 flex min-h-screen items-center justify-center px-6 md:px-12">
-          <div className="flex w-full flex-col items-center justify-center -translate-y-8">
+          <div className="flex w-full flex-col items-center justify-center">
             {/* Rotating Text */}
             <div
               className="origin-center will-change-transform transform-gpu"
@@ -68,12 +76,14 @@ export function Welcome() {
                 transform: `translateY(${heroTranslateY}px) scale(${heroScale})`,
               }}
             >
-              <div className="relative inline-flex border border-accent px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-7">
+              <div className="inline-flex rounded-sm border border-primary bg-white p-8 md:p-12">
+                <div className="relative inline-flex p-5">
                 {/* Corner decorations */}
-                <div className="absolute -top-5 -left-5 w-6 h-6 border-t border-l border-primary" />
-                <div className="absolute -bottom-5 -right-5 w-6 h-6 border-b border-r border-primary" />
+                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-primary" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-primary" />
+                <div className="inline-flex border border-accent px-8 py-6 sm:px-12 sm:py-8 md:px-20 md:py-12">
                 <span
-                  className="text-rotate text-4xl font-light tracking-[0.08em] text-primary sm:text-5xl md:text-7xl lg:text-8xl"
+                  className="text-rotate text-5xl font-light tracking-[0.08em] text-primary sm:text-6xl md:text-8xl lg:text-9xl"
                   style={
                     {
                       ["--duration" as any]: "7s",
@@ -86,20 +96,32 @@ export function Welcome() {
                     <span>RESULTS</span>
                   </span>
                 </span>
+                </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-            <div className="flex flex-col items-center gap-3">
+            <button
+              type="button"
+              aria-label="Scroll down"
+              onClick={() =>
+                document
+                  .getElementById("firm-title")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+              className="flex cursor-pointer flex-col items-center gap-3 rounded-full bg-white p-3 shadow-md"
+            >
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
-                className="h-6 w-6 animate-pulse text-primary/80"
+                className="h-6 w-6 animate-pulse text-primary"
               >
                 <path
                   strokeLinecap="round"
@@ -107,7 +129,7 @@ export function Welcome() {
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </section>
@@ -115,7 +137,9 @@ export function Welcome() {
       <section className="relative z-10 bg-primary/5 px-6 py-24 md:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
-            <p className="mb-6 text-lg font-semibold uppercase tracking-[0.25em] text-secondary md:text-xl">
+            <p
+              id="firm-title"
+              className="mb-6 scroll-mt-32 text-lg font-semibold uppercase tracking-[0.25em] text-[#0066d6] md:text-xl">
               Willison Law PC
             </p>
 
@@ -131,31 +155,26 @@ export function Welcome() {
               child, or proceed with other related family law matters.
             </p>
 
-            <Link to="/contact-us" className="btn btn-outline btn-accent px-10 text-primary">
-              Contact Us
-            </Link>
+            <p className="mb-8 text-lg leading-relaxed">
+              We are proud to partner with Solagree and their groundbreaking
+              process that keeps you out of court with a structured path to
+              resolution.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Link to="/contact-us" className="btn btn-outline btn-accent px-10 text-primary">
+                Contact Us
+              </Link>
+              <Link to="/family-law" className="btn btn-outline btn-accent px-10 text-primary">
+                Solagree
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-      <>
-        {/* Desktop: ticker */}
-        <div className="hidden sm:block">
-          <ReviewTicker />
-
-          <div className="flex justify-end pr-6 mt-4">
-            <Link to="/testimonials" className="btn btn-outline btn-primary btn-md px-8">
-              View More Testimonials
-            </Link>
-          </div>
-        </div>
-
-        {/* Mobile: centered CTA only */}
-        <div className="sm:hidden flex justify-center mt-4">
-          <Link to="/testimonials" className="btn btn-outline btn-primary btn-md px-8">
-            View Testimonials
-          </Link>
-        </div>
-      </>
+      <div className="hidden sm:block">
+        <ReviewTicker />
+      </div>
 
       <section className="relative z-10 bg-base-100 px-6 pb-24 pt-10 md:px-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center">

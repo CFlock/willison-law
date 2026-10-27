@@ -19,6 +19,31 @@ const sections = [
 export default function Page() {
   return (
     <FamilyLawPage title={title} description={description}>
+      <section>
+        <h2 className="text-xl sm:text-2xl font-semibold text-primary">
+          Our Partnership with Solagree
+        </h2>
+        <p className="mt-4">
+          We are proud to partner with Solagree and their groundbreaking process
+          that keeps you out of court with a structured path to resolution.{" "}
+          <a
+            href="https://www.solagree.com/go/willison-law-pc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit our Solagree page (opens in new tab)
+          </a>
+          .
+        </p>
+        <iframe
+          src="https://www.solagree.com/go/willison-law-pc/embed"
+          title="Solagree co-branded page for willison-law-pc"
+          width="100%"
+          height="720"
+          style={{ border: 0, width: "100%", maxWidth: "100%" }}
+          loading="lazy"
+        />
+      </section>
       {sections.map((section, index) => (
         <section key={index}>
           <h2 className="text-xl sm:text-2xl font-semibold text-primary">

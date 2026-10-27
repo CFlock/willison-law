@@ -160,7 +160,7 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="mx-auto flex flex-col w-full max-w-6xl gap-12 px-6 pt-36 pb-24">
+    <div className="mx-auto flex flex-col w-full max-w-6xl gap-12 px-6 pt-36 pb-24">
       <article className="prose prose-base mx-auto text-lg">
         <div className="flex flex-col items-start gap-1.5">
           <h1 className="!mb-0 text-primary text-4xl font-semibold tracking-tight">Contact Us</h1>
@@ -198,23 +198,23 @@ export default function Page() {
             />
 
             {isLoading && !loadError ? (
-              <div className="flex h-full items-center justify-center text-base-content/50">
+              <div role="status" className="flex h-full items-center justify-center text-base-content/70">
                 Loading contact form...
               </div>
             ) : null}
 
             {loadError ? (
-              <div className="rounded-box border border-error bg-error/10 p-4 text-sm text-error">
+              <div role="alert" className="rounded-box border border-error bg-error/10 p-4 text-sm text-error-content">
                 {loadError}
               </div>
             ) : null}
           </div>
 
-          <p className="mt-4 text-xs text-base-content/60">
+          <p className="mt-4 text-xs text-base-content/80">
             Submitting this form does not create an attorney-client relationship.
           </p>
         </fieldset>
       </section>
-    </main>
+    </div>
   );
 }

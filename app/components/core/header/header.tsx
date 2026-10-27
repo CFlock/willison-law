@@ -73,9 +73,8 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [familyLawOpen, setFamilyLawOpen] = React.useState(false);
   const [estatePlanningOpen, setEstatePlanningOpen] = React.useState(false);
-  const [resourcesOpen, setResourcesOpen] = React.useState(false);
   const [activeDesktopDropdown, setActiveDesktopDropdown] = React.useState<
-    "familyLaw" | "estatePlanning" | "resources" | null
+    "familyLaw" | "estatePlanning" | null
   >(null);
 
   const closeDesktopDropdown = React.useCallback(() => {
@@ -95,6 +94,35 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handlePointerDown);
   }, [activeDesktopDropdown]);
 
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMobileOpen(false);
+      setActiveDesktopDropdown(null);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  React.useEffect(() => {
+    if (mobileOpen) closeButtonRef.current?.focus();
+  }, [mobileOpen]);
+
+  const dropdownProps = (name: "familyLaw" | "estatePlanning") => ({
+    onMouseEnter: () => setActiveDesktopDropdown(name),
+    onMouseLeave: () =>
+      setActiveDesktopDropdown((current) => (current === name ? null : current)),
+    onFocus: () => setActiveDesktopDropdown(name),
+    onBlur: (event: React.FocusEvent<HTMLElement>) => {
+      if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+        setActiveDesktopDropdown((current) => (current === name ? null : current));
+      }
+    },
+  });
+
   return (
     <>
       <header
@@ -106,7 +134,7 @@ const Header = () => {
           flex
           w-full
           items-center
-          border-b
+          border-b-[0.5px]
           border-primary
           bg-base-100/95
           px-6
@@ -122,12 +150,12 @@ const Header = () => {
         {/* Logo */}
         <div className="flex-1">
           <Link to="/">
-            <img src="/logo.png" className="h-12 w-auto lg:h-16" alt="Logo" />
+            <img src="/logo.png" className="h-12 w-auto lg:h-16" alt="Willison Law, PC - Home" />
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-10 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-10 lg:flex">
           <Link to="/" className={navLinkClass}>
             Home
             <span className={underlineClass} />
@@ -141,8 +169,7 @@ const Header = () => {
           <div
             data-desktop-dropdown
             className="relative"
-            onMouseEnter={() => setActiveDesktopDropdown("familyLaw")}
-            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "familyLaw" ? null : current)}
+            {...dropdownProps("familyLaw")}
           >
             <Link
               to="/family-law"
@@ -230,8 +257,7 @@ const Header = () => {
           <div
             data-desktop-dropdown
             className="relative"
-            onMouseEnter={() => setActiveDesktopDropdown("estatePlanning")}
-            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "estatePlanning" ? null : current)}
+            {...dropdownProps("estatePlanning")}
           >
             <Link
               to="/estate-planning"
@@ -265,62 +291,8 @@ const Header = () => {
                 </li>
 
                 <li>
-                  <Link
-                    to="/estate-planning/trusts"
-                    className={dropdownItemClass}
-                    onClick={closeDesktopDropdown}
-                  >
-                    Trusts
-                  </Link>
-                </li>
-
-                <li>
                   <Link to="/estate-planning/wills" className={dropdownItemClass} onClick={closeDesktopDropdown}>
                     Wills
-                  </Link>
-                </li>
-              </ul>
-            ) : null}
-          </div>
-
-          {/* Resources */}
-          <div
-            data-desktop-dropdown
-            className="relative"
-            onMouseEnter={() => setActiveDesktopDropdown("resources")}
-            onMouseLeave={() => setActiveDesktopDropdown((current) => current === "resources" ? null : current)}
-          >
-            <button
-              type="button"
-              aria-haspopup="menu"
-              className={navLinkClass}
-              onClick={closeDesktopDropdown}
-            >
-              Resources
-              <span className={underlineClass} />
-            </button>
-
-            {activeDesktopDropdown === "resources" ? (
-              <ul tabIndex={0} className={`${dropdownClass} absolute`}>
-                <li>
-                  <Link to="/resources/blog" className={dropdownItemClass} onClick={closeDesktopDropdown}>
-                    Blog
-                  </Link>
-                </li>
-
-                <li>
-                  <Link to="/testimonials" className={dropdownItemClass} onClick={closeDesktopDropdown}>
-                    Testimonials
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to="/resources/parent-planning-guide"
-                    className={dropdownItemClass}
-                    onClick={closeDesktopDropdown}
-                  >
-                    Parent Planning Guide
                   </Link>
                 </li>
               </ul>
@@ -349,6 +321,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
+        inert={!mobileOpen}
         className={`
           fixed
           inset-0
@@ -366,6 +339,10 @@ const Header = () => {
         onClick={() => setMobileOpen(false)}
       >
         <aside
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
           className={`
             absolute
             right-6
@@ -386,9 +363,11 @@ const Header = () => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="mb-10 flex items-center justify-between">
-            <img src="/logo.png" className="h-10 w-auto" alt="Logo" />
+            <img src="/logo.png" className="h-10 w-auto" alt="Willison Law, PC" />
 
             <button
+              ref={closeButtonRef}
+              type="button"
               onClick={() => setMobileOpen(false)}
               aria-label="Close navigation menu"
             >
@@ -396,7 +375,7 @@ const Header = () => {
             </button>
           </div>
 
-          <nav className="flex flex-col gap-6">
+          <nav aria-label="Mobile" className="flex flex-col gap-6">
             <Link to="/" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Home
             </Link>
@@ -409,6 +388,7 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => setFamilyLawOpen((open) => !open)}
+                aria-expanded={familyLawOpen}
                 className={`${navLinkClass} flex items-center justify-between`}
               >
                 <span>Family Law</span>
@@ -489,6 +469,7 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => setEstatePlanningOpen((open) => !open)}
+                aria-expanded={estatePlanningOpen}
                 className={`${navLinkClass} flex items-center justify-between`}
               >
                 <span>Estate Planning</span>
@@ -520,56 +501,11 @@ const Header = () => {
                     Process
                   </Link>
                   <Link
-                    to="/estate-planning/trusts"
-                    className={navLinkClass}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Trusts
-                  </Link>
-                  <Link
                     to="/estate-planning/wills"
                     className={navLinkClass}
                     onClick={() => setMobileOpen(false)}
                   >
                     Wills
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <button
-                type="button"
-                onClick={() => setResourcesOpen((open) => !open)}
-                className={`${navLinkClass} flex items-center justify-between`}
-              >
-                <span>Resources</span>
-                <span className="inline-flex h-6 w-6 items-center justify-center text-lg leading-none">
-                  {resourcesOpen ? "−" : "+"}
-                </span>
-              </button>
-              {resourcesOpen && (
-                <div className="ml-4 flex flex-col gap-2">
-                  <Link
-                    to="/resources/blog"
-                    className={navLinkClass}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    to="/testimonials"
-                    className={navLinkClass}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Testimonials
-                  </Link>
-                  <Link
-                    to="/resources/parent-planning-guide"
-                    className={navLinkClass}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Parent Planning Guide
                   </Link>
                 </div>
               )}

@@ -1,7 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ReviewTicker() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) setPaused(true);
+  }, []);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   const position = useRef(0);
 
@@ -26,6 +37,10 @@ export default function ReviewTicker() {
       if (!el) return;
 
       // smooth inertia (lower = more luxury feel)
+      if (pausedRef.current) {
+        frame = requestAnimationFrame(animate);
+        return;
+      }
       speed.current += (targetSpeed.current - speed.current) * 0.05;
 
       position.current -= speed.current;
@@ -46,6 +61,8 @@ export default function ReviewTicker() {
 
   return (
     <div
+      role="region"
+      aria-label="Client reviews"
       className="relative overflow-hidden bg-base-100/60 backdrop-blur-md py-3 border-y border-white/10"
       onMouseEnter={() => (targetSpeed.current = 0.06)} // near pause
       onMouseLeave={() => (targetSpeed.current = 0.36)} // slow drift
@@ -60,8 +77,12 @@ export default function ReviewTicker() {
         className="flex min-w-full gap-10 whitespace-nowrap will-change-transform"
       >
         {[...items, ...items].map((text, i) => (
-          <div key={i} className="flex items-center gap-3 text-sm">
-            <span className="text-secondary/60 animate-pulse">●</span>
+          <div
+            key={i}
+            aria-hidden={i >= items.length ? true : undefined}
+            className="flex items-center gap-3 text-sm"
+          >
+            <span aria-hidden="true" className="text-secondary/60 animate-pulse">●</span>
             {text}
           </div>
         ))}

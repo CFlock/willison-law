@@ -40,22 +40,9 @@ export default [
       index("./components/core/estate-planning/estate-planning-home.tsx"),
       route("issues", "./components/core/estate-planning/issues.tsx"),
       route("process", "./components/core/estate-planning/process.tsx"),
-      route("trusts", "./components/core/estate-planning/trusts.tsx"),
       route("wills", "./components/core/estate-planning/wills.tsx"),
     ],
   ),
 
-  route(
-    "resources",
-    "./routes/resources-layout.tsx",
-    [
-      route("blog", "./routes/resources/blog.tsx"),
-      route(
-        "parent-planning-guide",
-        "./routes/resources/parent-planning-guide.tsx",
-      ),
-    ],
-  ),
   route("contact-us", "./routes/contact-us.tsx"),
-  route("testimonials", "./routes/testimonials.tsx"),
 ] satisfies RouteConfig;

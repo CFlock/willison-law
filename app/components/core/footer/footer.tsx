@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="pt-20">
       <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
         <aside>
-          <img src="/logo.png" className="h-12 w-auto lg:h-12" alt="Logo" />
+          <img src="/logo.png" className="h-12 w-auto lg:h-12" alt="Willison Law, PC" />
           <p>
             <br />
             The information on this website is for general information purposes
@@ -15,7 +15,7 @@ const Footer = () => {
             attorney-client relationship.
           </p>
         </aside>
-        <nav>
+        <nav aria-label="Important links">
           <h6 className="footer-title">Important Links</h6>
           <Link to="/about-us" className="link link-hover">
             About
@@ -23,11 +23,8 @@ const Footer = () => {
           <Link to="/contact-us" className="link link-hover">
             Contact Us
           </Link>
-          <Link to="/testimonials" className="link link-hover">
-            Testimonials
-          </Link>
         </nav>
-        <nav>
+        <nav aria-label="Contact information">
           <h6 className="footer-title">Contact Us</h6>
           <p className="text-base-content/70">141 S. McCormick St #101</p>
           <p className="text-base-content/70">Prescott AZ 86303</p>
@@ -38,7 +35,7 @@ const Footer = () => {
             (928) 445-3534
           </a>
         </nav>
-        <nav>
+        <nav aria-label="Social media">
           <h6 className="footer-title">Social</h6>
 
           <div className="grid grid-flow-col gap-4">
@@ -47,9 +44,10 @@ const Footer = () => {
               href="https://www.facebook.com/willisonlawpc/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook"
+              aria-label="Facebook (opens in new tab)"
             >
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
@@ -65,9 +63,10 @@ const Footer = () => {
               href="https://www.instagram.com/prescottfamilylaw/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label="Instagram (opens in new tab)"
             >
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
@@ -83,9 +82,10 @@ const Footer = () => {
               href="https://www.linkedin.com/in/stephanie-willison-23a68b70"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="LinkedIn (opens in new tab)"
             >
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"
@@ -101,9 +101,10 @@ const Footer = () => {
               href="https://www.youtube.com/channel/UCbMDHGqcUf_4ISswuZAcbug"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="YouTube"
+              aria-label="YouTube (opens in new tab)"
             >
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="24"

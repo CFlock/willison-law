@@ -66,9 +66,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
 
       <body className="flex min-h-screen flex-col bg-base-100 text-base-content antialiased overflow-x-hidden">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <Header />
 
-        <main className="flex-1 min-h-screen">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen focus:outline-none">
+          {children}
+        </main>
         <Footer />
         <ScrollRestoration />
 
@@ -99,7 +107,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <div className="pt-16 p-4 container mx-auto">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
@@ -107,6 +115,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           <code>{stack}</code>
         </pre>
       )}
-    </main>
+    </div>
   );
 }
