@@ -22,7 +22,9 @@ export function MoreAbout() {
                   2003
                 </li>
 
-                <li>University of Texas at Austin: B.S. in Communication</li>
+                <li>University of Texas at Austin: B.S. in Communication;
+                  2000
+                </li>
               </ul>
             </div>
 
@@ -40,6 +42,13 @@ export function MoreAbout() {
               <h4>Awards & Accolades</h4>
 
               <ul>
+                <li>
+                  Third Place, Best Law Firm, Prescott Daily Courier Reader's
+                  Choice Awards, 2026
+                </li>
+
+                <li>Best Attorney, Prescott Living Magazine, 2023</li>
+
                 <li>Avvo Rating in Family Law</li>
 
                 <li>
