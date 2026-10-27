@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Grandparents' Rights";
 const description =
@@ -20,6 +21,10 @@ const sections = [
       "At Willison Law, PC, we understand that navigating your rights as a grandparent can be an emotional and difficult process. In most cases, individuals who come to us wishing to learn more about their rights are involved in complex and contentious situations. With this in mind, our Prescott grandparents’ rights lawyer offers compassionate guidance and attentive, one-on-one communication. We can provide you with honest, sound counsel and represent you throughout the process.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/grandparents-rights" });
+}
 
 export default function Page() {
   return (

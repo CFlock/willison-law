@@ -5,6 +5,31 @@ export const DEFAULT_DESCRIPTION =
   "Compassionate family law and estate planning representation in Prescott, Arizona. Divorce, child custody, support, mediation, and more.";
 export const DEFAULT_IMAGE = "/logo.png";
 
+export const LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}${DEFAULT_IMAGE}`,
+  description: DEFAULT_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "141 S. McCormick St #101",
+    addressLocality: "Prescott",
+    addressRegion: "AZ",
+    postalCode: "86303",
+    addressCountry: "US",
+  },
+  areaServed: "Yavapai County, Arizona",
+  sameAs: [
+    "https://www.facebook.com/willisonlawpc/",
+    "https://www.instagram.com/prescottfamilylaw/",
+    "https://www.linkedin.com/in/stephanie-willison-23a68b70",
+    "https://www.youtube.com/channel/UCbMDHGqcUf_4ISswuZAcbug",
+  ],
+};
+
 function appendBrand(title: string) {
   return title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 }
@@ -35,6 +60,6 @@ export function buildPageMeta({
     { name: "twitter:title", content: pageTitle },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: `${SITE_URL}${DEFAULT_IMAGE}` },
-    { rel: "canonical", href: url },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }

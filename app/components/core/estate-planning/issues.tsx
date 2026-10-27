@@ -1,4 +1,5 @@
 import { EstatePlanningPage } from "./estate-planning-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Estate Planning Issues";
 const description =
@@ -35,6 +36,10 @@ const sections = [
       "If you are considering an estate plan, taking on this challenge alone is often a mistake. There are countless moving parts in the estate planning process, from identifying beneficiaries to addressing tax questions. An error during any of the steps can have severe consequences. Let a seasoned lawyer help you avoid issues with estate planning in Prescott. Call our office to learn more.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} | Prescott, AZ`, description, path: "/estate-planning/issues" });
+}
 
 export default function Page() {
   return (

@@ -1,4 +1,5 @@
 import { EstatePlanningPage } from "./estate-planning-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Estate Planning";
 const description =
@@ -25,6 +26,10 @@ const sections = [
       "Do not leave your assets in the hands of the court. Call a Prescott estate planning lawyer today to maintain control of your property through the end of your life.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: "Prescott Estate Planning Attorney", description, path: "/estate-planning" });
+}
 
 export default function Page() {
   return (

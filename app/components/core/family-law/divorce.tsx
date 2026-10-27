@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Divorce";
 const description =
@@ -40,6 +41,10 @@ const sections = [
       "Our team can help you navigate sensitive issues in your divorce as well, including domestic violence or paternity disputes. Our Prescott divorce lawyer understands how difficult divorce is for all parties involved. She is committed to providing you with the compassionate, personalized legal counsel you need. You can rely on our firm for wisdom, guidance, and a dedication to striving for optimal results.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/divorce" });
+}
 
 export default function Page() {
   return (

@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Child Support";
 const description =
@@ -30,6 +31,10 @@ const sections = [
       "Our Prescott child support lawyer can work closely with you, whether you have been asked to pay or if you are seeking support. We will seek an outcome that supports your child’s upbringing and development. Do not wait, call our office today for guidance.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/child-support" });
+}
 
 export default function Page() {
   return (

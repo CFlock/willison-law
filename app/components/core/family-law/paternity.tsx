@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Paternity";
 const description =
@@ -25,6 +26,10 @@ const sections = [
       "Whether you are a father wishing to fight for your rights or a mother seeking to establish paternity for the purpose of securing child support, our firm can help. We take the time to sit down with you and discuss the specifics of your case. Our Prescott paternity lawyer works to understand your unique goals and then creates a plan of legal action tailored to your circumstances. With every case we take on, we strive for optimal results for you and your family.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/paternity" });
+}
 
 export default function Page() {
   return (

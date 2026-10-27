@@ -1,4 +1,5 @@
 import { EstatePlanningPage } from "./estate-planning-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Wills";
 const description =
@@ -40,6 +41,10 @@ const sections = [
       "A strong last will and testament can provide peace of mind. Additionally, by addressing these issues during your life, you can eliminate many of the challenges that your loved ones will face after your passing. If you meet the basic requirements for creating a will, it is in your best interest to do so right away. Contact a Prescott wills lawyer for more information.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/estate-planning/wills" });
+}
 
 export default function Page() {
   return (

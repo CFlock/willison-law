@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Domestic Violence";
 const description =
@@ -20,6 +21,10 @@ const sections = [
       "If you are a victim of domestic violence, Willison Law, PC can help you work toward the immediate relief you need. We have experience helping individuals obtain restraining orders, both temporary and long-term, and can help you understand your legal options. Our Prescott domestic violence lawyer can fight to keep you and your family safe.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/domestic-violence" });
+}
 
 export default function Page() {
   return (

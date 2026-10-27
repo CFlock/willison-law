@@ -12,7 +12,8 @@ import "./app.css";
 import Header from "./components/core/header/header";
 import Footer from "./components/core/footer/footer";
 import React from "react";
-import { DEFAULT_DESCRIPTION, DEFAULT_IMAGE, DEFAULT_TITLE, SITE_NAME, SITE_URL } from "./seo";
+import { Analytics } from "@vercel/analytics/react";
+import { LOCAL_BUSINESS_SCHEMA } from "./seo";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -48,21 +49,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={DEFAULT_DESCRIPTION} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={DEFAULT_TITLE} />
-        <meta property="og:description" content={DEFAULT_DESCRIPTION} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:image" content={`${SITE_URL}${DEFAULT_IMAGE}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={DEFAULT_TITLE} />
-        <meta name="twitter:description" content={DEFAULT_DESCRIPTION} />
-        <meta name="twitter:image" content={`${SITE_URL}${DEFAULT_IMAGE}`} />
 
         <Meta />
 
         <Links />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
+        />
       </head>
 
       <body className="flex min-h-screen flex-col bg-base-100 text-base-content antialiased overflow-x-hidden">
@@ -78,6 +72,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
         <Footer />
+        <Analytics />
         <ScrollRestoration />
 
         <Scripts />

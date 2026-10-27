@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Child Custody";
 const description =
@@ -25,6 +26,10 @@ const sections = [
       "Our Prescott child custody lawyer always starts with an honest evaluation of your situation and then works with you to protect the best interests of your child. We will discuss all your legal options and help you decide on the legal path that is best for your circumstances. Contact Willison Law, PC to schedule your initial consultation. Our Prescott Child Custody Attorneys are ready to help.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/child-custody" });
+}
 
 export default function Page() {
   return (

@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Family Law Services";
 const description =
@@ -15,6 +16,10 @@ const sections = [
       "We offer comprehensive guidance through a variety of family law and estate planning cases, from divorce and child custody to paternity and property division, to planning for your future with a will or trust. Our level of experience in the area of family law surpasses that of many other attorneys in the Prescott area. Families turn to Willison Law, PC when they need further legal assistance to help them protect what matters most to them, whether it be their parental rights, child or spousal support, or wealth preservation. By working with a Prescott family lawyer at our firm, developing a plan-of-action designed to achieve your best interests and keep you and your loved ones together becomes our first order of business.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: "Prescott Family Law Services", description, path: "/family-law" });
+}
 
 export default function Page() {
   return (

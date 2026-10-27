@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Mediation";
 const description =
@@ -25,6 +26,10 @@ const sections = [
       "Our Prescott mediation attorney offers compassionate, one-on-one attention and honest communication as we advocate for your best interests every step of the way. Call Willison Law, PC to find out how we can help you.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Services in Prescott, AZ`, description, path: "/family-law/mediation" });
+}
 
 export default function Page() {
   return (

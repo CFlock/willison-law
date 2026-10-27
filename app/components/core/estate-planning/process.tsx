@@ -1,4 +1,5 @@
 import { EstatePlanningPage } from "./estate-planning-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Estate Planning Process";
 const description =
@@ -25,6 +26,10 @@ const sections = [
       "Discussing your estate planning goals with a Prescott attorney is the best way to make sure your plan works for your family. Call our office to get started.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} | Prescott, AZ`, description, path: "/estate-planning/process" });
+}
 
 export default function Page() {
   return (

@@ -1,4 +1,5 @@
 import { FamilyLawPage } from "./family-law-page";
+import { buildPageMeta } from "../../../seo";
 
 const title = "Legal Separation";
 const description =
@@ -20,6 +21,10 @@ const sections = [
       "If you’re considering a legal separation, or your spouse has requested a separation and you are concerned about various aspects of the separation, such as child custody or support, Willison Law, PC can help you clearly understand your options. Our Prescott legal separation lawyer offers compassionate, personalized guidance suited to your unique situation. She has been recognized by prestigious national organizations, including Avvo and the American Institute of Family Law Attorneys™ for her commitment to outstanding services and ethical practices. No matter how complicated your situation may be, we’re ready to advocate for you every step of the way.",
   },
 ];
+
+export function meta() {
+  return buildPageMeta({ title: `${title} Attorney in Prescott, AZ`, description, path: "/family-law/legal-separation" });
+}
 
 export default function Page() {
   return (
