@@ -375,7 +375,10 @@ const Header = () => {
             </button>
           </div>
 
-          <nav aria-label="Mobile" className="flex flex-col gap-6">
+          <nav
+            aria-label="Mobile"
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain flex flex-col gap-6"
+          >
             <Link to="/" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Home
             </Link>

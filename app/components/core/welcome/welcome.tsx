@@ -64,7 +64,7 @@ export function Welcome() {
       {/* Hero */}
       <section className="relative min-h-screen bg-white">
         <div
-          className="absolute inset-x-[20px] bottom-[20px] top-[101px] rounded-sm lg:top-[125px] bg-cover bg-center"
+          className="absolute inset-x-0 bottom-0 top-[81px] rounded-sm bg-cover bg-center md:inset-x-[20px] md:bottom-[20px] md:top-[101px] lg:top-[125px]"
           style={{ backgroundImage: `url(${watson})` }}
         />
         <div className="sticky top-0 flex min-h-screen items-center justify-center px-6 md:px-12">
@@ -107,11 +107,20 @@ export function Welcome() {
             <button
               type="button"
               aria-label="Scroll down"
-              onClick={() =>
-                document
-                  .getElementById("firm-title")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
-              }
+              onClick={() => {
+                const target = document.getElementById("firm-title");
+                if (!target) return;
+
+                if (window.matchMedia("(max-width: 767px)").matches) {
+                  window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY,
+                    behavior: "smooth",
+                  });
+                  return;
+                }
+
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               className="flex cursor-pointer flex-col items-center gap-3 rounded-full bg-white p-3 shadow-md"
             >
               <svg
@@ -134,12 +143,14 @@ export function Welcome() {
         </div>
       </section>
 
-      <section className="relative z-10 bg-primary/5 px-6 py-24 md:px-12">
+      <section
+        id="firm-title"
+        className="relative z-10 bg-primary/5 px-6 py-24 md:px-12"
+      >
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
             <p
-              id="firm-title"
-              className="mb-6 scroll-mt-32 text-lg font-semibold uppercase tracking-[0.25em] text-[#0066d6] md:text-xl">
+              className="mb-6 text-lg font-semibold uppercase tracking-[0.25em] text-[#0066d6] md:text-xl">
               Willison Law PC
             </p>
 
